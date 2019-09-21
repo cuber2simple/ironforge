@@ -1,0 +1,16 @@
+spring:
+  application:
+    name:
+  jackson:
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+  sleuth:
+    baggage-keys:
+      - req-id
+      - prefer-version-tag
+    propagation-keys:
+      - user-id
+      - user-name
+      - merchant-id
+      - merchant-name
+      - req-id
+      - token

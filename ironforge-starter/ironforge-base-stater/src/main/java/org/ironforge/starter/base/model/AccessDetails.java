@@ -1,6 +1,9 @@
 package org.ironforge.starter.base.model;
 
-public class UserDetails {
+import lombok.Data;
+
+@Data
+public class AccessDetails {
 
     /**
      * 请求ID
