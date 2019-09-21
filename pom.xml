@@ -137,6 +137,72 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
+            <dependency>
+                <artifactId>base-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>oauth2-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>risk-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>robot-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>account-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>acquire-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>channel-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>merchant-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>settlement-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>invisible-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>verify-api</artifactId>
+                <groupId>org.ironforge.java</groupId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>

@@ -10,6 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>settlement-server</artifactId>
+    <dependencies>
+        <dependency>
+            <artifactId>ironforge-biz-starter</artifactId>
+            <groupId>org.ironforge.java</groupId>
+        </dependency>
 
+        <dependency>
+            <artifactId>settlement-api</artifactId>
+            <groupId>org.ironforge.java</groupId>
+        </dependency>
+    </dependencies>
 
 </project>

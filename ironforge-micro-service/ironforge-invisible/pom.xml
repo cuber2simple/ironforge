@@ -3,22 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>ironforge</artifactId>
+        <artifactId>ironforge-micro-service</artifactId>
         <groupId>org.ironforge.java</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ironforge-micro-service</artifactId>
+    <artifactId>ironforge-invisible</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ironforge-merchant</module>
-        <module>ironforge-acquire</module>
-        <module>ironforge-channel</module>
-        <module>ironforge-account</module>
-        <module>ironforge-settlement</module>
-        <module>ironforge-verify</module>
-        <module>ironforge-invisible</module>
+        <module>invisible-api</module>
+        <module>invisible-server</module>
     </modules>
 
 

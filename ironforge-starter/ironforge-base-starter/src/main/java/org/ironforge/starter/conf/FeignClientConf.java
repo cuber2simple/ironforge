@@ -1,4 +1,4 @@
-package starter.conf;
+package org.ironforge.starter.conf;
 
 import feign.Feign;
 import okhttp3.ConnectionPool;

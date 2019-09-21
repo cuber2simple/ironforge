@@ -1,12 +1,12 @@
-package starter.conf;
+package org.ironforge.starter.conf;
 
 import brave.Tracer;
 import lombok.extern.slf4j.Slf4j;
-import org.ironforge.starter.utils.SpringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
+import org.ironforge.starter.utils.SpringUtils;
 
 @Configuration
 @Slf4j

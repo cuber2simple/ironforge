@@ -11,5 +11,15 @@
 
     <artifactId>risk-server</artifactId>
 
+    <dependencies>
+        <dependency>
+            <artifactId>ironforge-biz-starter</artifactId>
+            <groupId>org.ironforge.java</groupId>
+        </dependency>
 
+        <dependency>
+            <artifactId>risk-api</artifactId>
+            <groupId>org.ironforge.java</groupId>
+        </dependency>
+    </dependencies>
 </project>

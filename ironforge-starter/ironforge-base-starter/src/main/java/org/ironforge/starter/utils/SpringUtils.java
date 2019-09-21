@@ -1,4 +1,4 @@
-package starter.utils;
+package org.ironforge.starter.utils;
 
 import brave.Span;
 import brave.Tracer;
