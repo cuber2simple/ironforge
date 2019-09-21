@@ -12,8 +12,9 @@
     <artifactId>ironforge-settlement</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>settlement-feign-client</module>
-        <module>ironforge-settlement-server</module>
+
+        <module>settlement-server</module>
+        <module>settlement-api</module>
     </modules>
 
 

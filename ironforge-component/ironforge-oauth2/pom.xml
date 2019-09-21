@@ -12,8 +12,8 @@
     <artifactId>ironforge-oauth2</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>oauth2-feign-client</module>
-        <module>ironforge-oauth2-server</module>
+        <module>oauth2-api</module>
+        <module>oauth2-server</module>
     </modules>
 
 

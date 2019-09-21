@@ -12,8 +12,8 @@
     <artifactId>ironforge-merchant</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>merchant-feign-client</module>
-        <module>ironforge-merchant-server</module>
+        <module>merchant-api</module>
+        <module>merchant-server</module>
     </modules>
 
 

@@ -12,8 +12,8 @@
     <artifactId>ironforge-risk</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ironforge-risk-server</module>
-        <module>risk-feign-client</module>
+        <module>risk-api</module>
+        <module>risk-server</module>
     </modules>
 
 

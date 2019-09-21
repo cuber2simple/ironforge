@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>ironforge-base-stater</module>
-        <module>ironforge-biz-starter</module>
     </modules>
 
 

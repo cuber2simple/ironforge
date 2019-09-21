@@ -12,8 +12,8 @@
     <artifactId>ironforge-channel</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>channel-feign-client</module>
-        <module>ironforge-channel-server</module>
+        <module>channel-api</module>
+        <module>channel-server</module>
     </modules>
 
 

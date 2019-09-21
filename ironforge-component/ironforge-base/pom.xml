@@ -12,8 +12,8 @@
     <artifactId>ironforge-base</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ironforge-base-server</module>
-        <module>base-feign-client</module>
+        <module>base-api</module>
+        <module>base-server</module>
     </modules>
 
 

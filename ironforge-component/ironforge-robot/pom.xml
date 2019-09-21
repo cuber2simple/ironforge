@@ -12,8 +12,8 @@
     <artifactId>ironforge-robot</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ironforge-robot-server</module>
-        <module>robot-feign-client</module>
+        <module>robot-api</module>
+        <module>robot-server</module>
     </modules>
 
 

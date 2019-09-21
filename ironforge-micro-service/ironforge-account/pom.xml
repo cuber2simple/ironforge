@@ -12,8 +12,8 @@
     <artifactId>ironforge-account</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>account-feign-client</module>
-        <module>ironforge-account-server</module>
+        <module>account-api</module>
+        <module>account-server</module>
     </modules>
 
 
