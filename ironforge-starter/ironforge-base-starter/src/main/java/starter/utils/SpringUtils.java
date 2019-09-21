@@ -1,9 +1,9 @@
-package org.ironforge.starter.base.utils;
+package starter.utils;
 
 import brave.Span;
 import brave.Tracer;
 import brave.propagation.ExtraFieldPropagation;
-import org.ironforge.starter.base.model.AccessDetails;
+import org.ironforge.starter.model.AccessDetails;
 
 import java.util.Objects;
 

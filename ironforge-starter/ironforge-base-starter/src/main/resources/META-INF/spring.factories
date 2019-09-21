@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration =\
+  org.ironforge.starter.conf.IronforgeStart,\
+  org.ironforge.starter.conf.FeignClientConf

@@ -12,7 +12,8 @@
     <artifactId>ironforge-starter</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ironforge-base-stater</module>
+        <module>ironforge-biz-starter</module>
+        <module>ironforge-base-starter</module>
     </modules>
 
 

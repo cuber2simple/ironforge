@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ironforge-base-stater</artifactId>
+    <artifactId>ironforge-base-starter</artifactId>
     <dependencies>
 
         <dependency>
@@ -48,5 +48,6 @@
             <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>
