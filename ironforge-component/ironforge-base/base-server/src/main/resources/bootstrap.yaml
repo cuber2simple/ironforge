@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ironforge-base
+server:
+  port: 8001

@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        hostname: ${spring.cloud.client.ip-address}
+        instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
+  jackson:
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/base
+    driver-class-name: org.postgresql.Driver
+    username: base
+    password: base
+  flyway:
+    url: ${spring.datasource.url}
+    password: ${spring.datasource.password}
+    user: ${spring.datasource.username}
+  sleuth:
+    baggage-keys:
+      - req-id
+      - prefer-version-tag
+    propagation-keys:
+      - user-id
+      - user-name
+      - merchant-id
+      - merchant-name
+      - req-id
+      - token
+    log:
+      slf4j:
+        whitelisted-mdc-keys:
+          - user-id
+          - req-id
