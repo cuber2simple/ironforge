@@ -96,6 +96,13 @@
             <version>4.2.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -110,7 +117,7 @@
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
-                <version>6.0.3</version>
+                <version>5.2.4</version>
             </dependency>
 
             <dependency>
