@@ -18,7 +18,7 @@ public class FeignClientConf {
     @Bean
     public okhttp3.OkHttpClient okHttpClient() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new okhttp3.OkHttpClient.Builder()
                 //以后做成可配置的选项
                 .readTimeout(60, TimeUnit.SECONDS)

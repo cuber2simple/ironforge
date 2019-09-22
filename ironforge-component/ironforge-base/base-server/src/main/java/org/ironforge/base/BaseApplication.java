@@ -17,6 +17,5 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class BaseApplication {
   public static void main(String[] args) {
       SpringApplication.run(BaseApplication.class, args);
-
   }
 }
