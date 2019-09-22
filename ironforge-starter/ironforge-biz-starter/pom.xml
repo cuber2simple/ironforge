@@ -61,6 +61,11 @@
             <artifactId>hazelcast-spring</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-hibernate53</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
