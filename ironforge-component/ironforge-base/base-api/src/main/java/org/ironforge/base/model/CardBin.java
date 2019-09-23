@@ -1,4 +1,4 @@
 package org.ironforge.base.model;
 
-public class Cardbin {
+public class CardBin {
 }
