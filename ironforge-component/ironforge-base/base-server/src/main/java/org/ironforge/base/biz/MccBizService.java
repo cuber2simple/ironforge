@@ -1,7 +1,6 @@
 package org.ironforge.base.biz;
 
-import org.ironforge.base.model.Mcc;
-import org.ironforge.base.persist.entity.TMccDef;
+import org.ironforge.base.bo.Mcc;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package org.ironforge.base.biz;
 
-import org.ironforge.base.model.Country;
+import org.ironforge.base.bo.Country;
 
 public interface CountryBizService {
 

@@ -1,6 +1,6 @@
 package org.ironforge.base.biz;
 
-import org.ironforge.base.model.CountryRegion;
+import org.ironforge.base.bo.CountryRegion;
 
 import java.util.List;
 

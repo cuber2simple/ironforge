@@ -1,4 +1,4 @@
-package org.ironforge.base.model;
+package org.ironforge.base.bo;
 
 import lombok.Data;
 

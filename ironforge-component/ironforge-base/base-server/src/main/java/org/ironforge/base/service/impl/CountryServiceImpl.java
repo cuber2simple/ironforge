@@ -22,7 +22,7 @@ public class CountryServiceImpl implements CountryService {
 
   @Override
   @Cacheable(key = "'base:country:'.concat(#p0)", cacheNames = "base:country")
-  public TCountry3166 findByCountryCode3(String alphaCode3) {
+  public TCountry3166 findByAlphaCode3(String alphaCode3) {
     return countryRepository.findByAlphaCode3(alphaCode3);
   }
 
