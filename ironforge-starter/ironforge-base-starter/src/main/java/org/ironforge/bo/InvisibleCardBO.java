@@ -6,7 +6,7 @@ import org.ironforge.utils.MaskUtils;
 
 @Data
 @ToString
-public class InvisibleCardBO {
+public class InvisibleCardBO extends IronforgeResp<InvisibleCardBO> {
 
     private String cardNo;
 

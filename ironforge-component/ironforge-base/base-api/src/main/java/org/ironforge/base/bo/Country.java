@@ -1,11 +1,12 @@
 package org.ironforge.base.bo;
 
 import lombok.Data;
+import org.ironforge.bo.IronforgeResp;
 
 import java.time.LocalDateTime;
 
 @Data
-public class Country {
+public class Country extends IronforgeResp<Country> {
   private int id;
   private String fifa;
   private String dial;

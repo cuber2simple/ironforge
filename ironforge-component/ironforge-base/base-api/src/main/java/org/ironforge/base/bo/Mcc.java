@@ -1,20 +1,21 @@
 package org.ironforge.base.bo;
 
 import lombok.Data;
+import org.ironforge.bo.IronforgeResp;
 
 import java.time.LocalDateTime;
 
 @Data
-public class Mcc {
-  private int id;
-  private String mccCode;
-  private String officialNameEn;
-  private String officialNameCn;
-  private String isSys;
-  private String status;
-  private String updateUserId;
-  private String createUserId;
-  private LocalDateTime expireDatetime;
-  private LocalDateTime updateDatetime;
-  private LocalDateTime createDatetime;
+public class Mcc extends IronforgeResp<Mcc> {
+    private int id;
+    private String mccCode;
+    private String officialNameEn;
+    private String officialNameCn;
+    private String isSys;
+    private String status;
+    private String updateUserId;
+    private String createUserId;
+    private LocalDateTime expireDatetime;
+    private LocalDateTime updateDatetime;
+    private LocalDateTime createDatetime;
 }

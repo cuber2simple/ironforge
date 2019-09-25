@@ -1,11 +1,12 @@
 package org.ironforge.base.bo;
 
 import lombok.Data;
+import org.ironforge.bo.IronforgeResp;
 
 import java.time.LocalDateTime;
 
 @Data
-public class CardBin {
+public class CardBin extends IronforgeResp<CardBin> {
   private int id;
   private String cardBin;
   private String cardOrg;
