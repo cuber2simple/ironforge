@@ -6,7 +6,7 @@ import org.ironforge.bo.IronforgeResp;
 import java.time.LocalDateTime;
 
 @Data
-public class CountryRegion extends IronforgeResp<CountryRegion> {
+public class CountryRegion {
   private int id;
   private String countryNumber;
   private String officialNameEn;

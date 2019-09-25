@@ -14,16 +14,18 @@ import java.util.List;
 @Slf4j
 public class MccServiceImpl implements MccService {
 
-  @Autowired private MccRepository mccRepository;
+    @Autowired
+    private MccRepository mccRepository;
 
-  @Override
-  @Cacheable(key = "'base:mcc:'.concat(#p0)", cacheNames = "base:mcc")
-  public TMccDef findByMccCode(String mccCode) {
-    return mccRepository.findByMccCode(mccCode);
-  }
+    @Override
+    @Cacheable(key = "'base:mcc:'.concat(#p0)", cacheNames = "base:mcc")
+    public TMccDef findByMccCode(String mccCode) {
+        return mccRepository.findByMccCode(mccCode);
+    }
 
-  @Override
-  public List<TMccDef> findAll() {
-    return mccRepository.findAll();
-  }
+    @Override
+    @Cacheable(cacheNames = "base:mcc:full")
+    public List<TMccDef> findAll() {
+        return mccRepository.findAll();
+    }
 }

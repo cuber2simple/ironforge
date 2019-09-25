@@ -6,7 +6,7 @@ import org.ironforge.bo.IronforgeResp;
 import java.time.LocalDateTime;
 
 @Data
-public class Mcc extends IronforgeResp<Mcc> {
+public class Mcc {
     private int id;
     private String mccCode;
     private String officialNameEn;

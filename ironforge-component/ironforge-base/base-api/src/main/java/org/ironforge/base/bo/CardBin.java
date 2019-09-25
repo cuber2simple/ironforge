@@ -6,7 +6,7 @@ import org.ironforge.bo.IronforgeResp;
 import java.time.LocalDateTime;
 
 @Data
-public class CardBin extends IronforgeResp<CardBin> {
+public class CardBin {
   private int id;
   private String cardBin;
   private String cardOrg;

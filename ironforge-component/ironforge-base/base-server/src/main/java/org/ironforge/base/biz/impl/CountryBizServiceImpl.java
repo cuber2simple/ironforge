@@ -30,7 +30,7 @@ public class CountryBizServiceImpl extends BeanCopyTransfer<TCountry3166, Countr
   }
 
   @Override
-  public Country findByCountryCode3(String alphaCode3) {
+  public Country findByAlphaCode3(String alphaCode3) {
     log.info("接受国家查询的3字码为:{}", alphaCode3);
     TCountry3166 tCountry3166 = countryService.findByAlphaCode3(alphaCode3);
     Country country = this.entityTransferBO(tCountry3166);
