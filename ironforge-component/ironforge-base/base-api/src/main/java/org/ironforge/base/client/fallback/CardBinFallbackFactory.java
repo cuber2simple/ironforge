@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class CardBinFallbackFactory extends IronforgeFallbackFactory<CardBinFeignClient> {
     @Override
     public CardBinFeignClient createFallback(IronforgeException ironforgeException) {
-        return null;
+        return new CardBinFeignClientFallback(ironforgeException);
     }
 
     class CardBinFeignClientFallback implements CardBinFeignClient {
@@ -29,7 +29,7 @@ public class CardBinFallbackFactory extends IronforgeFallbackFactory<CardBinFeig
         public CardBin fetchBinInfo(InvisibleCardBO invisibleCardBO) {
             IronforgeCode ironforgeCode = ironforgeException.retrieve();
             CardBin cardBin = CardBin.status(ironforgeCode, CardBin.class);
-            cardBin.setMsg(ironforgeException.getMessage());
+            cardBin.setRespMsg(ironforgeException.getMessage());
             return cardBin;
         }
     }
