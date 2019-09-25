@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface Transfer<Entity, BO> {
 
-  BO entityTransferBO(Entity entity);
+    BO entityTransferBO(Entity entity);
 
-  Entity boTransferEntity(BO bo);
+    Entity boTransferEntity(BO bo);
 
-  List<BO> batchTransferBO(List<Entity> entityList);
+    List<BO> batchTransferBO(List<Entity> entityList);
 
-  List<Entity> batchTransferEntity(List<BO> boList);
+    List<Entity> batchTransferEntity(List<BO> boList);
 }

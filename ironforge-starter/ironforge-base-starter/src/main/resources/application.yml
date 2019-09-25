@@ -14,3 +14,7 @@ spring:
       - merchant-name
       - req-id
       - token
+    log:
+      slf4j:
+        whitelisted-mdc-keys:
+          - user-id

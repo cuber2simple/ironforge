@@ -1,4 +1,4 @@
-package org.ironforge.starter.constants;
+package org.ironforge.constants;
 
 public class TraceConstants {
     /**

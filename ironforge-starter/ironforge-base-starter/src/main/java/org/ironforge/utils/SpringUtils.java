@@ -1,24 +1,25 @@
-package org.ironforge.starter.utils;
+package org.ironforge.utils;
 
 import brave.Span;
 import brave.Tracer;
 import brave.propagation.ExtraFieldPropagation;
-import org.ironforge.starter.model.AccessDetails;
+import org.ironforge.bo.AccessDetails;
 
 import java.util.Objects;
 
 public class SpringUtils {
     private static Tracer sleuthTracer;
     private static volatile boolean init;
-    public static void init(Tracer tracer){
-        if(!init){
+
+    public static void init(Tracer tracer) {
+        if (!init) {
             sleuthTracer = tracer;
             init = true;
         }
     }
 
-    public static AccessDetails getCurrent(){
-        if(Objects.nonNull(sleuthTracer)){
+    public static AccessDetails getCurrent() {
+        if (Objects.nonNull(sleuthTracer)) {
             Span span = sleuthTracer.currentSpan();
             String userId = ExtraFieldPropagation.get(span.context(), "user-id");
             String userName = ExtraFieldPropagation.get(span.context(), "user-name");

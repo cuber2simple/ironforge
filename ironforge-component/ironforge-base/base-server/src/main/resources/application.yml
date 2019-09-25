@@ -54,3 +54,10 @@ spring:
       hibernate.cache.hazelcast.instance_name: ${spring.application.name}
       hibernate.cache.use_minimal_puts: true
       hibernate.cache.hazelcast.use_lite_member: true
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true
