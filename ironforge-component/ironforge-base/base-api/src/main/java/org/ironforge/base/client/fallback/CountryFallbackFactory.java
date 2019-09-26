@@ -29,7 +29,7 @@ public class CountryFallbackFactory extends IronforgeFallbackFactory<CountryFeig
         }
 
         @Override
-        public IronforgeResp<Country> findByCountryCode3(String alphaCode3) {
+        public IronforgeResp<Country> findByAlphaCode3(String alphaCode3) {
             return new IronforgeResp<>(ironforgeException);
         }
 

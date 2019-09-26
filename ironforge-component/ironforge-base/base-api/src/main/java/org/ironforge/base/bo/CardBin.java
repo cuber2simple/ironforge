@@ -1,7 +1,6 @@
 package org.ironforge.base.bo;
 
 import lombok.Data;
-import org.ironforge.bo.IronforgeResp;
 
 import java.time.LocalDateTime;
 
