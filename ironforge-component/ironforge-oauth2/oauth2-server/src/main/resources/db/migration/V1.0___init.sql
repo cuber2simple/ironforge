@@ -81,11 +81,10 @@ CREATE TABLE IF NOT EXISTS t_role (
     role_desc				VARCHAR(1024),
     namespace               VARCHAR(256),
     path					VARCHAR(1024),
-    parent_id			    integer,
     avatar					VARCHAR(256),
     status					VARCHAR(64),
-    update_worker    		VARCHAR(64),
-    create_worker    		VARCHAR(64),
+    update_user_id    		VARCHAR(64),
+    create_user_id    		VARCHAR(64),
     expire_datetime			TIMESTAMP WITHOUT TIME ZONE,
     update_datetime         TIMESTAMP WITHOUT TIME ZONE,
     create_datetime         TIMESTAMP WITHOUT TIME ZONE
@@ -97,16 +96,17 @@ comment on table  t_role						is '角色';
 comment on column t_role.id						is '角色ID';
 comment on column t_role.role_code				is '角色编码';
 comment on column t_role.role_name				is '角色名';
-comment on column t_role.role_alias 			is '角色描述';
+comment on column t_role.role_desc 			    is '角色描述';
 comment on column t_role.path 					is '角色路径';
-comment on column t_role.parent_id				is '角色父级ID';
 comment on column t_role.avatar					is '角色头像';
 comment on column t_role.status              	is '状态';
-comment on column t_role.update_worker			is '更新操作员';
-comment on column t_role.create_worker			is '创建操作员';
+comment on column t_role.update_user_id			is '更新操作员';
+comment on column t_role.create_user_id			is '创建操作员';
 comment on column t_role.update_datetime		is '更新时间';
 comment on column t_role.expire_datetime		is '过期时间';
 comment on column t_role.create_datetime		is '创建时间';
+
+
 
 
 
