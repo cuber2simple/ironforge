@@ -28,8 +28,8 @@ public class SpringUtils {
             String reqId = ExtraFieldPropagation.get(span.context(), "reqId");
             String token = ExtraFieldPropagation.get(span.context(), "token");
             AccessDetails accessDetails = new AccessDetails();
-            accessDetails.setMerchantId(Long.parseLong(merchantId));
-            accessDetails.setUserId(Long.parseLong(userId));
+            accessDetails.setMerchantId(merchantId);
+            accessDetails.setUserId(userId);
             accessDetails.setMerchantName(merchantName);
             accessDetails.setUserName(userName);
             accessDetails.setReqId(reqId);

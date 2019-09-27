@@ -15,11 +15,11 @@ public class AccessDetails {
      * 后面99999999  代表api访问
      * 前面代表商户号， 后面代表用户号
      */
-    private long userId;
+    private String userId;
     /**
      * 商户ID[99999999] 代表系统本身操作
      */
-    private long merchantId;
+    private String merchantId;
     /**
      * 用户名称
      */
