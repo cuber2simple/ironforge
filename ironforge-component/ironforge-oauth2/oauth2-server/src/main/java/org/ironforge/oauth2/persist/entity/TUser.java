@@ -23,20 +23,28 @@ public class TUser {
     private String createUserId;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
-
-    @OneToMany
-    @JoinTable(name="t_user_rule", schema = "public", catalog = "oauth2",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(name="role_code", referencedColumnName = "role_code"))
+    private TUserClient userClient;
     private List<TRole> roleList;
 
-    @OneToOne
+    @OneToOne(targetEntity = TUserClient.class)
     @JoinColumn(
-            name="user_id",
-            referencedColumnName = "user_id"
+            name = "user_id",
+            referencedColumnName = "user_id",
+            insertable = false,
+            updatable = false
     )
-    private TUserClient tUserClient;
+    public TUserClient getUserClient() {
+        return userClient;
+    }
 
+    public void setUserClient(TUserClient userClient) {
+        this.userClient = userClient;
+    }
+
+    @OneToMany(targetEntity = TRole.class)
+    @JoinTable(name = "t_user_rule", schema = "public", catalog = "oauth2",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id", insertable = false, updatable = false),
+            inverseJoinColumns = @JoinColumn(name = "role_code", referencedColumnName = "role_code", insertable = false, updatable = false))
     public List<TRole> getRoleList() {
         return roleList;
     }
@@ -44,6 +52,7 @@ public class TUser {
     public void setRoleList(List<TRole> roleList) {
         this.roleList = roleList;
     }
+
 
     @Id
     @Column(name = "id")

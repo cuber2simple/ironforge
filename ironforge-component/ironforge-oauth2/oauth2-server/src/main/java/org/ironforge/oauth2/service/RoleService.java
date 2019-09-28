@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoleService extends IronforgeService<RoleRepository, TRole, Integer> {
+    public TRole findByRoleCode(String roleCode) {
+        return repository.findByRoleCode(roleCode);
+    }
 }

@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ResourceService extends IronforgeService<ResourceRepository, TResource, Integer> {
+    public TResource findByResourceCode(String resourceCode) {
+        return repository.findByResourceCode(resourceCode);
+    }
 }

@@ -21,34 +21,35 @@ public class TGroup {
     private LocalDateTime expireDatetime;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
-
-    @OneToOne
-    @JoinColumn(
-            name="manager_role_code",
-            referencedColumnName = "role_code"
-    )
     private TRole managerRule;
-
-    @OneToMany
-    @JoinTable(name="t_group_role", schema = "public", catalog = "oauth2",
-            joinColumns = @JoinColumn(name = "group_code", referencedColumnName = "group_code"),
-            inverseJoinColumns = @JoinColumn(name="role_code", referencedColumnName = "role_code"))
     private List<TRole> roleList;
 
-    public TRole getManagerRule() {
-        return managerRule;
-    }
 
-    public void setManagerRule(TRole managerRule) {
-        this.managerRule = managerRule;
-    }
-
+    @OneToMany(targetEntity = TRole.class)
+    @JoinTable(name = "t_group_role", schema = "public", catalog = "oauth2",
+            joinColumns = @JoinColumn(name = "group_code", referencedColumnName = "group_code", insertable = false, updatable = false),
+            inverseJoinColumns = @JoinColumn(name = "role_code", referencedColumnName = "role_code", insertable = false, updatable = false))
     public List<TRole> getRoleList() {
         return roleList;
     }
 
     public void setRoleList(List<TRole> roleList) {
         this.roleList = roleList;
+    }
+
+    @ManyToOne(targetEntity = TRole.class)
+    @JoinColumn(
+            name = "manager_role_code",
+            referencedColumnName = "role_code",
+            insertable = false,
+            updatable = false
+    )
+    public TRole getManagerRule() {
+        return managerRule;
+    }
+
+    public void setManagerRule(TRole managerRule) {
+        this.managerRule = managerRule;
     }
 
     @Id

@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GroupService extends IronforgeService<GroupRepository, TGroup, Integer> {
+    public TGroup findByGroupCode(String groupCode) {
+        return repository.findByGroupCode(groupCode);
+    }
 }

@@ -20,12 +20,19 @@ public class TRole {
     private LocalDateTime expireDatetime;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
-
-    @OneToMany
-    @JoinTable(name="t_resource_role", schema = "public", catalog = "oauth2",
-            joinColumns = @JoinColumn(name = "role_code", referencedColumnName = "role_code"),
-            inverseJoinColumns = @JoinColumn(name="resource_code", referencedColumnName = "resource_code"))
     private List<TResource> resourceList;
+
+    @OneToMany(targetEntity = TResource.class)
+    @JoinTable(name = "t_resource_role", schema = "public", catalog = "oauth2",
+            joinColumns = @JoinColumn(name = "role_code", referencedColumnName = "role_code"),
+            inverseJoinColumns = @JoinColumn(name = "resource_code", referencedColumnName = "resource_code"))
+    public List<TResource> getResourceList() {
+        return resourceList;
+    }
+
+    public void setResourceList(List<TResource> resourceList) {
+        this.resourceList = resourceList;
+    }
 
     @Id
     @Column(name = "id")

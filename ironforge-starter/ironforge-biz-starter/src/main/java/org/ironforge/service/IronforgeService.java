@@ -10,61 +10,61 @@ import java.util.Optional;
 
 public class IronforgeService<Repository extends JpaRepository<T, ID>, T, ID> {
 
-    @Autowired
-    private Repository repository;
+    @Autowired(required = false)
+    protected Repository repository;
 
-    T save(T entity) {
+    public T save(T entity) {
         ReflectUtils.fillCreateInfo(entity);
         return repository.save(entity);
     }
 
-    void saveAll(List<T> entities) {
+    public void saveAll(List<T> entities) {
         if (CollectionUtils.isNotEmpty(entities)) {
             entities.forEach(ReflectUtils::fillCreateInfo);
             repository.saveAll(entities);
         }
     }
 
-    T update(T entity) {
+    public T update(T entity) {
         ReflectUtils.fillUpdateInfo(entity);
         return repository.save(entity);
     }
 
-    void updateAll(List<T> entities) {
+    public void updateAll(List<T> entities) {
         if (CollectionUtils.isNotEmpty(entities)) {
             entities.forEach(ReflectUtils::fillUpdateInfo);
             repository.saveAll(entities);
         }
     }
 
-    T getOne(ID id) {
+    public T getOne(ID id) {
         return repository.getOne(id);
     }
 
-    Optional<T> findById(ID id) {
+    public Optional<T> findById(ID id) {
         return repository.findById(id);
     }
 
-    boolean existsById(ID id) {
+    public boolean existsById(ID id) {
         return repository.existsById(id);
     }
 
-    Iterable<T> findAll() {
+    public List<T> findAll() {
         return repository.findAll();
     }
 
-    List<T> findAllById(List<ID> ids) {
+    public List<T> findAllById(List<ID> ids) {
         if (CollectionUtils.isNotEmpty(ids)) {
             return repository.findAllById(ids);
         }
         return null;
     }
 
-    long count() {
+    public long count() {
         return repository.count();
     }
 
-    void deleteById(ID id) {
+    public void deleteById(ID id) {
         deleteById(id);
     }
 

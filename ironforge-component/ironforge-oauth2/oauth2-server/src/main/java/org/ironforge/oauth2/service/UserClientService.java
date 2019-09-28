@@ -7,4 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserClientService extends IronforgeService<UserClientRepository, TUserClient, Integer> {
+    public TUserClient findByUserId(String userId) {
+        return repository.findByUserId(userId);
+    }
+
+    public TUserClient findByAppId(String appId) {
+        return repository.findByAppId(appId);
+    }
 }
