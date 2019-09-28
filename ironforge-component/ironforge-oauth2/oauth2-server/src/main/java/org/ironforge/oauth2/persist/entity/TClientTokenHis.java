@@ -1,9 +1,6 @@
 package org.ironforge.oauth2.persist.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,7 +19,7 @@ public class TClientTokenHis {
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
 
-    @Basic
+    @Id
     @Column(name = "id")
     public Integer getId() {
         return id;

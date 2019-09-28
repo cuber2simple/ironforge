@@ -7,12 +7,10 @@ import org.ironforge.base.bo.CardBin;
 import org.ironforge.base.persist.entity.TCardBin;
 import org.ironforge.base.service.CardBinService;
 import org.ironforge.bo.InvisibleCardBO;
-import org.ironforge.bo.IronforgeResp;
 import org.ironforge.transfer.BeanCopyTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.smartcardio.Card;
 import java.util.Objects;
 
 @Service

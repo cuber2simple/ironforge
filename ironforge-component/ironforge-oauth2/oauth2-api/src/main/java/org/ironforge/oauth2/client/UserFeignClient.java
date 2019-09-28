@@ -5,5 +5,5 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(name = "ironforge-oauth2", path = "/user", fallbackFactory = UserFallbackFactory.class)
 public interface UserFeignClient {
-
+    
 }

@@ -27,6 +27,9 @@ public class SpringUtils {
             String merchantName = ExtraFieldPropagation.get(span.context(), "merchant-name");
             String reqId = ExtraFieldPropagation.get(span.context(), "reqId");
             String token = ExtraFieldPropagation.get(span.context(), "token");
+            String customerId = ExtraFieldPropagation.get(span.context(), "customer-id");
+            String reqIp = ExtraFieldPropagation.get(span.context(), "req-ip");
+            String platform = ExtraFieldPropagation.get(span.context(), "platform");
             AccessDetails accessDetails = new AccessDetails();
             accessDetails.setMerchantId(merchantId);
             accessDetails.setUserId(userId);
@@ -34,6 +37,10 @@ public class SpringUtils {
             accessDetails.setUserName(userName);
             accessDetails.setReqId(reqId);
             accessDetails.setToken(token);
+            accessDetails.setCustomerId(customerId);
+            accessDetails.setReqIp(reqIp);
+            accessDetails.setPlatform(platform);
+            accessDetails.setTraceId(span.context().traceIdString());
             return accessDetails;
         }
         return null;

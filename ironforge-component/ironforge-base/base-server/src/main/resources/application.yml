@@ -36,6 +36,9 @@ spring:
       - merchant-name
       - req-id
       - token
+      - customer-id
+      - platform
+      - req-ip
     log:
       slf4j:
         whitelisted-mdc-keys:

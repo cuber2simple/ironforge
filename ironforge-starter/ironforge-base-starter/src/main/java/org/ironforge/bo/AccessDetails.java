@@ -33,4 +33,24 @@ public class AccessDetails {
      * 使用的token
      */
     private String token;
+
+    /**
+     * 商户之上的客户ID
+     */
+    private String customerId;
+
+    /**
+     * 终端访问来源(api/h5/android/ios)
+     */
+    private String platform;
+
+    /**
+     * 访问Ip
+     */
+    private String reqIp;
+
+    /**
+     * 访问的traceId
+     */
+    private String traceId;
 }

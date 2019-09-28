@@ -2,6 +2,7 @@ package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "t_user", schema = "public", catalog = "oauth2")
@@ -22,6 +23,27 @@ public class TUser {
     private String createUserId;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
+
+    @OneToMany
+    @JoinTable(name="t_user_rule", schema = "public", catalog = "oauth2",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(name="role_code", referencedColumnName = "role_code"))
+    private List<TRole> roleList;
+
+    @OneToOne
+    @JoinColumn(
+            name="user_id",
+            referencedColumnName = "user_id"
+    )
+    private TUserClient tUserClient;
+
+    public List<TRole> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<TRole> roleList) {
+        this.roleList = roleList;
+    }
 
     @Id
     @Column(name = "id")
