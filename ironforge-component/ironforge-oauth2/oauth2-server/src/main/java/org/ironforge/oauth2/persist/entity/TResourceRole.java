@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "t_resource_role", schema = "public", catalog = "oauth2")
 public class TResourceRole {
-    private int id;
+    private Integer id;
     private String resourceCode;
     private String roleCode;
     private String status;
@@ -17,6 +17,7 @@ public class TResourceRole {
     private LocalDateTime createDatetime;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;

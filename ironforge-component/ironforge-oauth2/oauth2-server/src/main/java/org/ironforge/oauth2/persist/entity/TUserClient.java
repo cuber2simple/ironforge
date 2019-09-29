@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "t_user_client", schema = "public", catalog = "oauth2")
 public class TUserClient {
-    private int id;
+    private Integer id;
     private String userId;
     private String appId;
     private String appSecret;
@@ -23,6 +23,7 @@ public class TUserClient {
     private LocalDateTime createDatetime;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;

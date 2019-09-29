@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "t_group", schema = "public", catalog = "oauth2")
 public class TGroup {
-    private int id;
+    private Integer id;
     private String groupCode;
     private String groupName;
     private String groupDesc;
@@ -53,6 +53,7 @@ public class TGroup {
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;

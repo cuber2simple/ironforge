@@ -21,6 +21,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: base
     password: base
+    hikari:
+      auto-commit: false
   flyway:
     url: ${spring.datasource.url}
     password: ${spring.datasource.password}

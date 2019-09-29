@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "t_user_role", schema = "public", catalog = "oauth2")
 public class TUserRole {
-    private int id;
+    private Integer id;
     private String userId;
     private String roleCode;
     private String status;

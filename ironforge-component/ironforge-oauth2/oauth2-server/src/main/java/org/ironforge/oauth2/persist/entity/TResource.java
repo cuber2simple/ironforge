@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "t_resource", schema = "public", catalog = "oauth2")
 public class TResource {
-    private int id;
+    private Integer id;
     private String resourceCode;
     private String resourceName;
     private String resourceDesc;
@@ -50,6 +50,7 @@ public class TResource {
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
