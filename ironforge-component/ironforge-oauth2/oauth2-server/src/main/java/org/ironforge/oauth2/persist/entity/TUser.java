@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "t_user", schema = "public", catalog = "oauth2")
 public class TUser {
-    private int id;
+    private Integer id;
     private String merchantId;
     private String userId;
     private String userType;
@@ -55,6 +55,7 @@ public class TUser {
 
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;

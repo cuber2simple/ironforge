@@ -43,29 +43,34 @@ public class ReflectUtils {
         if (Objects.nonNull(t)) {
             LocalDateTime now = LocalDateTime.now();
             AccessDetails details = SpringUtils.getCurrent();
-            emptyThenSet(t, CREATE_USER_ID, String.class, details.getUserId());
-            emptyThenSet(t, UPDATE_USER_ID, String.class, details.getUserId());
-            emptyThenSet(t, CREATE_USER_NAME, String.class, details.getUserName());
-            emptyThenSet(t, UPDATE_USER_NAME, String.class, details.getUserName());
-            emptyThenSet(t, CREATE_DATETIME, LocalDateTime.class, now);
-            emptyThenSet(t, UPDATE_DATETIME, LocalDateTime.class, now);
-            emptyThenSet(t, USER_ID, String.class, details.getUserId());
-            emptyThenSet(t, MERCHANT_ID, String.class, details.getMerchantId());
-            emptyThenSet(t, USER_NAME, String.class, details.getUserName());
-            emptyThenSet(t, MERCHANT_NAME, String.class, details.getMerchantName());
-            emptyThenSet(t, CUSTOMER_ID, String.class, details.getCustomerId());
-            emptyThenSet(t, REQ_IP, String.class, details.getReqIp());
-            emptyThenSet(t, REQ_ID, String.class, details.getReqId());
-            emptyThenSet(t, TRACE_ID, String.class, details.getTraceId());
+            if (Objects.nonNull(details)) {
+                emptyThenSet(t, CREATE_USER_ID, String.class, details.getUserId());
+                emptyThenSet(t, UPDATE_USER_ID, String.class, details.getUserId());
+                emptyThenSet(t, CREATE_USER_NAME, String.class, details.getUserName());
+                emptyThenSet(t, UPDATE_USER_NAME, String.class, details.getUserName());
+                emptyThenSet(t, CREATE_DATETIME, LocalDateTime.class, now);
+                emptyThenSet(t, UPDATE_DATETIME, LocalDateTime.class, now);
+                emptyThenSet(t, USER_ID, String.class, details.getUserId());
+                emptyThenSet(t, MERCHANT_ID, String.class, details.getMerchantId());
+                emptyThenSet(t, USER_NAME, String.class, details.getUserName());
+                emptyThenSet(t, MERCHANT_NAME, String.class, details.getMerchantName());
+                emptyThenSet(t, CUSTOMER_ID, String.class, details.getCustomerId());
+                emptyThenSet(t, REQ_IP, String.class, details.getReqIp());
+                emptyThenSet(t, REQ_ID, String.class, details.getReqId());
+                emptyThenSet(t, TRACE_ID, String.class, details.getTraceId());
+            }
         }
     }
 
     public static <T> void fillUpdateInfo(T t) {
         LocalDateTime now = LocalDateTime.now();
         AccessDetails details = SpringUtils.getCurrent();
-        setAnyway(t, UPDATE_USER_ID, String.class, details.getUserId());
-        setAnyway(t, UPDATE_USER_NAME, String.class, details.getUserName());
-        setAnyway(t, UPDATE_DATETIME, LocalDateTime.class, now);
+        if (Objects.nonNull(details)) {
+            setAnyway(t, UPDATE_USER_ID, String.class, details.getUserId());
+            setAnyway(t, UPDATE_USER_NAME, String.class, details.getUserName());
+            setAnyway(t, UPDATE_DATETIME, LocalDateTime.class, now);
+        }
+
     }
 
     public static <T, F> void emptyThenSet(T t, String fieldName, Class<F> fClass, F fieldValue) {

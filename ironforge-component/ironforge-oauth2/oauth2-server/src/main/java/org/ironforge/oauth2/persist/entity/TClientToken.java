@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "t_client_token", schema = "public", catalog = "oauth2")
 public class TClientToken {
-    private int id;
+    private Integer id;
     private String appId;
     private String accessToken;
     private String refreshToken;
@@ -20,7 +20,11 @@ public class TClientToken {
     private LocalDateTime createDatetime;
 
     @Id
-    @Column(name = "id")
+    @SequenceGenerator(name="webuser_idwebuser_seq",
+            sequenceName="webuser_idwebuser_seq",
+            allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator="webuser_idwebuser_seq")    @Column(name = "id")
     public int getId() {
         return id;
     }

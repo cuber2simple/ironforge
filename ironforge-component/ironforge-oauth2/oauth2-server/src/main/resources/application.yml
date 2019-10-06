@@ -21,6 +21,8 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: oauth2
     password: oauth2
+    hikari:
+      auto-commit: false
   flyway:
     url: ${spring.datasource.url}
     password: ${spring.datasource.password}
