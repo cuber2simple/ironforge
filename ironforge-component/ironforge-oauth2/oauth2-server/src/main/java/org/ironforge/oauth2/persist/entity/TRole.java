@@ -1,12 +1,14 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "t_role", schema = "public", catalog = "oauth2")
-public class TRole {
+public class TRole implements Serializable {
+    private static final long serialVersionUID = 3623537430393340541L;
     private Integer id;
     private String roleCode;
     private String roleName;
@@ -22,7 +24,7 @@ public class TRole {
     private LocalDateTime createDatetime;
     private List<TResource> resourceList;
 
-    @OneToMany(targetEntity = TResource.class)
+    @ManyToMany
     @JoinTable(name = "t_resource_role", schema = "public", catalog = "oauth2",
             joinColumns = @JoinColumn(name = "role_code", referencedColumnName = "role_code"),
             inverseJoinColumns = @JoinColumn(name = "resource_code", referencedColumnName = "resource_code"))
@@ -35,13 +37,13 @@ public class TRole {
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

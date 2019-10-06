@@ -1,11 +1,13 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "t_user_role", schema = "public", catalog = "oauth2")
-public class TUserRole {
+public class TUserRole implements Serializable {
+    private static final long serialVersionUID = -4678710395025994881L;
     private Integer id;
     private String userId;
     private String roleCode;
@@ -18,11 +20,11 @@ public class TUserRole {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

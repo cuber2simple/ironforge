@@ -3,6 +3,7 @@ package org.ironforge.oauth2.service;
 import lombok.extern.slf4j.Slf4j;
 import org.ironforge.oauth2.Oauth2Application;
 import org.ironforge.oauth2.persist.entity.TResource;
+import org.ironforge.oauth2.persist.entity.TResourceTree;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class ResourceServiceTest {
 
     @Autowired
     private ResourceService resourceService;
+
+    @Autowired
+    private ResourceTreeService resourceTreeService;
 
     @Test
     public void testInsertBaseResource() {
@@ -49,7 +53,7 @@ public class ResourceServiceTest {
         sale.setResourceCode("poss_order_sale");
         sale.setResourceDesc("交易订单查询");
         sale.setResourceName("交易订单");
-        sale.setResourceType("menu");
+        sale.setResourceType("menu_page");
         sale.setUrl("/order/sale");
         resourceService.save(sale);
 
@@ -60,7 +64,7 @@ public class ResourceServiceTest {
         auth.setResourceCode("poss_order_auth");
         auth.setResourceDesc("预授权订单查询");
         auth.setResourceName("预授权订单");
-        auth.setResourceType("menu");
+        auth.setResourceType("menu_page");
         auth.setUrl("/order/auth");
         resourceService.save(auth);
 
@@ -71,7 +75,7 @@ public class ResourceServiceTest {
         refund.setResourceCode("poss_order_refund");
         refund.setResourceDesc("退款订单查询");
         refund.setResourceName("退款订单");
-        refund.setResourceType("menu");
+        refund.setResourceType("menu_page");
         refund.setUrl("/order/refund");
         resourceService.save(refund);
 
@@ -82,7 +86,7 @@ public class ResourceServiceTest {
         chargeback.setResourceCode("poss_order_chargeback");
         chargeback.setResourceDesc("拒付订单查询");
         chargeback.setResourceName("拒付订单");
-        chargeback.setResourceType("menu");
+        chargeback.setResourceType("menu_page");
         chargeback.setUrl("/order/changeback");
         resourceService.save(chargeback);
 
@@ -105,7 +109,7 @@ public class ResourceServiceTest {
         channelConf.setResourceCode("poss_channel_config");
         channelConf.setResourceDesc("渠道配置");
         channelConf.setResourceName("渠道配置");
-        channelConf.setResourceType("menu");
+        channelConf.setResourceType("menu_page");
         chargeback.setUrl("/channel/config");
         resourceService.save(channelConf);
 
@@ -116,9 +120,64 @@ public class ResourceServiceTest {
         kyc.setResourceCode("poss_channel_kyc");
         kyc.setResourceDesc("签约进件");
         kyc.setResourceName("签约进件");
-        kyc.setResourceType("menu");
+        kyc.setResourceType("menu_page");
         resourceService.save(channelConf);
 
+        TResourceTree tResourceTree = new TResourceTree();
+        tResourceTree.setResourceCode(index.getResourceCode());
+        tResourceTree.setSubResourceCode(order.getResourceCode());
+        tResourceTree.setSortIndex(0);
+        resourceTreeService.save(tResourceTree);
+
+
+        TResourceTree channelTree = new TResourceTree();
+        channelTree.setResourceCode(index.getResourceCode());
+        channelTree.setSubResourceCode(channel.getResourceCode());
+        channelTree.setSortIndex(1);
+        resourceTreeService.save(channelTree);
+
+
+        TResourceTree saleTree = new TResourceTree();
+        saleTree.setResourceCode(order.getResourceCode());
+        saleTree.setSubResourceCode(sale.getResourceCode());
+        saleTree.setSortIndex(0);
+        resourceTreeService.save(saleTree);
+
+
+
+        TResourceTree authTree = new TResourceTree();
+        authTree.setResourceCode(order.getResourceCode());
+        authTree.setSubResourceCode(auth.getResourceCode());
+        authTree.setSortIndex(1);
+        resourceTreeService.save(authTree);
+
+
+        TResourceTree refundTree = new TResourceTree();
+        refundTree.setResourceCode(order.getResourceCode());
+        refundTree.setSubResourceCode(refund.getResourceCode());
+        refundTree.setSortIndex(2);
+        resourceTreeService.save(refundTree);
+
+
+        TResourceTree changebackTree = new TResourceTree();
+        changebackTree.setResourceCode(order.getResourceCode());
+        changebackTree.setSubResourceCode(chargeback.getResourceCode());
+        changebackTree.setSortIndex(3);
+        resourceTreeService.save(changebackTree);
+
+
+        TResourceTree channelConfTree = new TResourceTree();
+        channelConfTree.setResourceCode(channel.getResourceCode());
+        channelConfTree.setSubResourceCode(channelConf.getResourceCode());
+        channelConfTree.setSortIndex(0);
+        resourceTreeService.save(channelConfTree);
+
+
+        TResourceTree kycTree = new TResourceTree();
+        kycTree.setResourceCode(order.getResourceCode());
+        kycTree.setSubResourceCode(kyc.getResourceCode());
+        kycTree.setSortIndex(1);
+        resourceTreeService.save(kycTree);
 
     }
 }

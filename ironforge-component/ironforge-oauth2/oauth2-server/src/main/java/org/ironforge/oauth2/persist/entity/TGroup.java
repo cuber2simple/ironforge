@@ -1,12 +1,14 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "t_group", schema = "public", catalog = "oauth2")
-public class TGroup {
+public class TGroup implements Serializable {
+    private static final long serialVersionUID = -128555162988409760L;
     private Integer id;
     private String groupCode;
     private String groupName;
@@ -55,11 +57,11 @@ public class TGroup {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

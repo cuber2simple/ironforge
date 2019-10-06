@@ -1,11 +1,13 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "t_client_token", schema = "public", catalog = "oauth2")
-public class TClientToken {
+public class TClientToken implements Serializable {
+    private static final long serialVersionUID = 8315047938944658024L;
     private Integer id;
     private String appId;
     private String accessToken;
@@ -25,11 +27,11 @@ public class TClientToken {
             allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator="webuser_idwebuser_seq")    @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

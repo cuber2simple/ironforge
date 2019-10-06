@@ -1,11 +1,13 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "t_client_token_his", schema = "public", catalog = "oauth2")
-public class TClientTokenHis {
+public class TClientTokenHis implements Serializable {
+    private static final long serialVersionUID = 6241418966950678827L;
     private Integer id;
     private String appId;
     private String accessToken;

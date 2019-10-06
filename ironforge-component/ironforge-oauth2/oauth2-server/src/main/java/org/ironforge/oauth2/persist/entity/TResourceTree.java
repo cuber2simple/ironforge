@@ -1,12 +1,14 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "t_resource_tree", schema = "public", catalog = "oauth2")
-public class TResourceTree {
-    private int id;
+public class TResourceTree implements Serializable {
+    private static final long serialVersionUID = -5904423946299898030L;
+    private Integer id;
     private String resourceCode;
     private String subResourceCode;
     private Integer sortIndex;
@@ -18,12 +20,13 @@ public class TResourceTree {
     private LocalDateTime createDatetime;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

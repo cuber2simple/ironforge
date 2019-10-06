@@ -1,12 +1,14 @@
 package org.ironforge.oauth2.persist.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "t_resource", schema = "public", catalog = "oauth2")
-public class TResource {
+public class TResource implements Serializable {
+    private static final long serialVersionUID = -5603798889922990128L;
     private Integer id;
     private String resourceCode;
     private String resourceName;
@@ -23,22 +25,8 @@ public class TResource {
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
 
-    private List<TResource> subResources;
-
     private List<TRole> ownerRoles;
 
-
-    @OneToMany(targetEntity = TRole.class)
-    @JoinTable(name = "t_resource_tree", schema = "public", catalog = "oauth2",
-            joinColumns = @JoinColumn(name = "resource_code", referencedColumnName = "resource_code", insertable = false, updatable = false),
-            inverseJoinColumns = @JoinColumn(name = "sub_resource_code", referencedColumnName = "resource_code", insertable = false, updatable = false))
-    public List<TResource> getSubResources() {
-        return subResources;
-    }
-
-    public void setSubResources(List<TResource> subResources) {
-        this.subResources = subResources;
-    }
 
     @OneToMany(targetEntity = TRole.class)
     @JoinTable(name = "t_resource_role", schema = "public", catalog = "oauth2",
@@ -55,11 +43,11 @@ public class TResource {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
