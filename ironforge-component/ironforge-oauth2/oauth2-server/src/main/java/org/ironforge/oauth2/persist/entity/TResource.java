@@ -11,10 +11,8 @@ public class TResource {
     private String resourceCode;
     private String resourceName;
     private String resourceDesc;
-    private String namespace;
     private String resourceType;
-    private String parentCode;
-    private String roadMap;
+    private String namespace;
     private String url;
     private String avatar;
     private String icon;
@@ -24,29 +22,34 @@ public class TResource {
     private LocalDateTime expireDatetime;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
-    private int sortIndex;
-    private List<TRole> roleList;
+
+    private List<TResource> subResources;
+
+    private List<TRole> ownerRoles;
+
+
+    @OneToMany(targetEntity = TRole.class)
+    @JoinTable(name = "t_resource_tree", schema = "public", catalog = "oauth2",
+            joinColumns = @JoinColumn(name = "resource_code", referencedColumnName = "resource_code", insertable = false, updatable = false),
+            inverseJoinColumns = @JoinColumn(name = "sub_resource_code", referencedColumnName = "resource_code", insertable = false, updatable = false))
+    public List<TResource> getSubResources() {
+        return subResources;
+    }
+
+    public void setSubResources(List<TResource> subResources) {
+        this.subResources = subResources;
+    }
 
     @OneToMany(targetEntity = TRole.class)
     @JoinTable(name = "t_resource_role", schema = "public", catalog = "oauth2",
             joinColumns = @JoinColumn(name = "resource_code", referencedColumnName = "resource_code", insertable = false, updatable = false),
             inverseJoinColumns = @JoinColumn(name = "role_code", referencedColumnName = "role_code", insertable = false, updatable = false))
-    public List<TRole> getRoleList() {
-        return roleList;
+    public List<TRole> getOwnerRoles() {
+        return ownerRoles;
     }
 
-    public void setRoleList(List<TRole> roleList) {
-        this.roleList = roleList;
-    }
-
-    @Basic
-    @Column(name = "sort_index")
-    public int getSortIndex() {
-        return sortIndex;
-    }
-
-    public void setSortIndex(int sortIndex) {
-        this.sortIndex = sortIndex;
+    public void setOwnerRoles(List<TRole> ownerRoles) {
+        this.ownerRoles = ownerRoles;
     }
 
     @Id
@@ -90,16 +93,6 @@ public class TResource {
     }
 
     @Basic
-    @Column(name = "namespace")
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public void setNamespace(String namespace) {
-        this.namespace = namespace;
-    }
-
-    @Basic
     @Column(name = "resource_type")
     public String getResourceType() {
         return resourceType;
@@ -110,23 +103,13 @@ public class TResource {
     }
 
     @Basic
-    @Column(name = "parent_code")
-    public String getParentCode() {
-        return parentCode;
+    @Column(name = "namespace")
+    public String getNamespace() {
+        return namespace;
     }
 
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
-    }
-
-    @Basic
-    @Column(name = "road_map")
-    public String getRoadMap() {
-        return roadMap;
-    }
-
-    public void setRoadMap(String roadMap) {
-        this.roadMap = roadMap;
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
     }
 
     @Basic
@@ -233,11 +216,9 @@ public class TResource {
             return false;
         if (resourceDesc != null ? !resourceDesc.equals(tResource.resourceDesc) : tResource.resourceDesc != null)
             return false;
-        if (namespace != null ? !namespace.equals(tResource.namespace) : tResource.namespace != null) return false;
         if (resourceType != null ? !resourceType.equals(tResource.resourceType) : tResource.resourceType != null)
             return false;
-        if (parentCode != null ? !parentCode.equals(tResource.parentCode) : tResource.parentCode != null) return false;
-        if (roadMap != null ? !roadMap.equals(tResource.roadMap) : tResource.roadMap != null) return false;
+        if (namespace != null ? !namespace.equals(tResource.namespace) : tResource.namespace != null) return false;
         if (url != null ? !url.equals(tResource.url) : tResource.url != null) return false;
         if (avatar != null ? !avatar.equals(tResource.avatar) : tResource.avatar != null) return false;
         if (icon != null ? !icon.equals(tResource.icon) : tResource.icon != null) return false;
@@ -262,10 +243,8 @@ public class TResource {
         result = 31 * result + (resourceCode != null ? resourceCode.hashCode() : 0);
         result = 31 * result + (resourceName != null ? resourceName.hashCode() : 0);
         result = 31 * result + (resourceDesc != null ? resourceDesc.hashCode() : 0);
-        result = 31 * result + (namespace != null ? namespace.hashCode() : 0);
         result = 31 * result + (resourceType != null ? resourceType.hashCode() : 0);
-        result = 31 * result + (parentCode != null ? parentCode.hashCode() : 0);
-        result = 31 * result + (roadMap != null ? roadMap.hashCode() : 0);
+        result = 31 * result + (namespace != null ? namespace.hashCode() : 0);
         result = 31 * result + (url != null ? url.hashCode() : 0);
         result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
         result = 31 * result + (icon != null ? icon.hashCode() : 0);

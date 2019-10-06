@@ -161,10 +161,8 @@ CREATE TABLE IF NOT EXISTS t_resource (
     resource_code			VARCHAR(64),
     resource_name			VARCHAR(256),
     resource_desc			VARCHAR(1024),
-    namespace               VARCHAR(256),
     resource_type           VARCHAR(64),
-    parent_code             VARCHAR(64),
-    road_map                VARCHAR(2048),
+    namespace               VARCHAR(256),
     url					    VARCHAR(1024),
     avatar					VARCHAR(256),
     icon					VARCHAR(128),
@@ -177,7 +175,6 @@ CREATE TABLE IF NOT EXISTS t_resource (
 );
 
 CREATE UNIQUE INDEX idx_t_resource_code ON t_resource USING btree(resource_code);
-CREATE UNIQUE INDEX idx_t_resource_parent_code ON t_resource USING btree(parent_code);
 
 comment on table  t_resource						is '资源表';
 comment on column t_resource.id						is '资源表ID';
@@ -186,8 +183,6 @@ comment on column t_resource.resource_name			is '资源名称';
 comment on column t_resource.resource_desc 			is '资源描述';
 comment on column t_resource.namespace 			    is 'POSS/MPS';
 comment on column t_resource.resource_type 			is 'menu/page/element/api';
-comment on column t_resource.parent_code 			is '父类节点';
-comment on column t_resource.road_map 			    is '完整路径';
 comment on column t_resource.url 					is '资源路径';
 comment on column t_resource.avatar					is '资源头像';
 comment on column t_resource.icon					is '菜单图标';
@@ -197,6 +192,33 @@ comment on column t_resource.create_user_id			is '创建操作员';
 comment on column t_resource.update_datetime		is '更新时间';
 comment on column t_resource.expire_datetime		is '过期时间';
 comment on column t_resource.create_datetime		is '创建时间';
+
+CREATE TABLE IF NOT EXISTS t_resource_tree (
+    id					    SERIAL primary key,
+    resource_code			VARCHAR(64),
+    sub_resource_code		VARCHAR(64),
+    sort_index              int,
+    status					VARCHAR(64),
+    update_user_id    		VARCHAR(64),
+    create_user_id    		VARCHAR(64),
+    expire_datetime			TIMESTAMP WITHOUT TIME ZONE,
+    update_datetime         TIMESTAMP WITHOUT TIME ZONE,
+    create_datetime         TIMESTAMP WITHOUT TIME ZONE
+);
+
+CREATE UNIQUE INDEX idx_t_resource_tree ON t_resource_tree USING btree(resource_code, sub_resource_code);
+
+comment on table  t_resource_tree						is '资源树';
+comment on column t_resource_tree.id					is '树ID';
+comment on column t_resource_tree.resource_code			is '资源CODE';
+comment on column t_resource_tree.sub_resource_code		is '资源子CODE';
+comment on column t_resource_tree.sort_index		    is '排序';
+comment on column t_resource_tree.status              	is '状态';
+comment on column t_resource_tree.update_user_id		is '更新操作员';
+comment on column t_resource_tree.create_user_id		is '创建操作员';
+comment on column t_resource_tree.update_datetime		is '更新时间';
+comment on column t_resource_tree.expire_datetime		is '过期时间';
+comment on column t_resource_tree.create_datetime		is '创建时间';
 
 CREATE TABLE IF NOT EXISTS t_resource_role (
     id					    SERIAL primary key,
