@@ -9,6 +9,7 @@ public enum IronforgeCode {
     PROCESS("0009", "进行中"),
     RETRY("0008", "请重试"),
     UNKNOWN("9999", "未知错误"),
+    INVALID_ARGUMENT("0002", "非法参数")
     ;
     protected String code;
     protected String msg;

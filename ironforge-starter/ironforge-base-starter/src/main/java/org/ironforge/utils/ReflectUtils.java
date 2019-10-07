@@ -21,7 +21,7 @@ public class ReflectUtils {
 
     public static final String CREATE_DATETIME = "createDatetime";
 
-    public static final String UPDATE_DATETIME = "createDatetime";
+    public static final String UPDATE_DATETIME = "updateDatetime";
 
     public static final String USER_ID = "userId";
 
@@ -43,13 +43,13 @@ public class ReflectUtils {
         if (Objects.nonNull(t)) {
             LocalDateTime now = LocalDateTime.now();
             AccessDetails details = SpringUtils.getCurrent();
+            emptyThenSet(t, CREATE_DATETIME, LocalDateTime.class, now);
+            emptyThenSet(t, UPDATE_DATETIME, LocalDateTime.class, now);
             if (Objects.nonNull(details)) {
                 emptyThenSet(t, CREATE_USER_ID, String.class, details.getUserId());
                 emptyThenSet(t, UPDATE_USER_ID, String.class, details.getUserId());
                 emptyThenSet(t, CREATE_USER_NAME, String.class, details.getUserName());
                 emptyThenSet(t, UPDATE_USER_NAME, String.class, details.getUserName());
-                emptyThenSet(t, CREATE_DATETIME, LocalDateTime.class, now);
-                emptyThenSet(t, UPDATE_DATETIME, LocalDateTime.class, now);
                 emptyThenSet(t, USER_ID, String.class, details.getUserId());
                 emptyThenSet(t, MERCHANT_ID, String.class, details.getMerchantId());
                 emptyThenSet(t, USER_NAME, String.class, details.getUserName());
@@ -65,10 +65,10 @@ public class ReflectUtils {
     public static <T> void fillUpdateInfo(T t) {
         LocalDateTime now = LocalDateTime.now();
         AccessDetails details = SpringUtils.getCurrent();
+        setAnyway(t, UPDATE_DATETIME, LocalDateTime.class, now);
         if (Objects.nonNull(details)) {
             setAnyway(t, UPDATE_USER_ID, String.class, details.getUserId());
-            setAnyway(t, UPDATE_USER_NAME, String.class, details.getUserName());
-            setAnyway(t, UPDATE_DATETIME, LocalDateTime.class, now);
+            setAnyway(t, UPDATE_USER_NAME,  String.class, details.getUserName());
         }
 
     }

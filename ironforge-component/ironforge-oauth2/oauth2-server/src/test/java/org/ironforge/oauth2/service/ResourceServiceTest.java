@@ -98,7 +98,7 @@ public class ResourceServiceTest {
         channel.setResourceDesc("渠道管理");
         channel.setResourceName("渠道管理");
         channel.setResourceType("menu");
-        chargeback.setUrl("/channel");
+        channel.setUrl("/channel");
         resourceService.save(channel);
 
 
@@ -110,7 +110,7 @@ public class ResourceServiceTest {
         channelConf.setResourceDesc("渠道配置");
         channelConf.setResourceName("渠道配置");
         channelConf.setResourceType("menu_page");
-        chargeback.setUrl("/channel/config");
+        channelConf.setUrl("/channel/config");
         resourceService.save(channelConf);
 
         TResource kyc = new TResource();
@@ -121,7 +121,8 @@ public class ResourceServiceTest {
         kyc.setResourceDesc("签约进件");
         kyc.setResourceName("签约进件");
         kyc.setResourceType("menu_page");
-        resourceService.save(channelConf);
+        kyc.setUrl("/channel/kyc");
+        resourceService.save(kyc);
 
         TResourceTree tResourceTree = new TResourceTree();
         tResourceTree.setResourceCode(index.getResourceCode());

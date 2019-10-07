@@ -12,7 +12,11 @@ public class IronforgeException extends RuntimeException {
     public IronforgeException(String message) {
         super(message);
         this.code = IronforgeCode.UNKNOWN.getCode();
+    }
 
+    public IronforgeException(String code, String message) {
+        super(message);
+        this.code = code;
     }
 
     public IronforgeException(String message, Throwable cause) {
