@@ -171,7 +171,7 @@ public class TClientToken implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (id != null ? id.hashCode() : 0);;
         result = 31 * result + (appId != null ? appId.hashCode() : 0);
         result = 31 * result + (accessToken != null ? accessToken.hashCode() : 0);
         result = 31 * result + (refreshToken != null ? refreshToken.hashCode() : 0);
