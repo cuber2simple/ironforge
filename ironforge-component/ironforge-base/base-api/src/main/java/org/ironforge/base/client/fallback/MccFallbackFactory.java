@@ -5,6 +5,7 @@ import org.ironforge.base.bo.Mcc;
 import org.ironforge.base.client.MccFeignClient;
 import org.ironforge.bo.IronforgeResp;
 import org.ironforge.err.IronforgeException;
+import org.ironforge.hystrix.BaseFeignClientFallback;
 import org.ironforge.hystrix.IronforgeFallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +20,10 @@ public class MccFallbackFactory extends IronforgeFallbackFactory<MccFeignClient>
         return new MccFallback(ironforgeException);
     }
 
-    class MccFallback implements MccFeignClient {
-        private IronforgeException ironforgeException;
+    class MccFallback extends BaseFeignClientFallback implements MccFeignClient {
 
         public MccFallback(IronforgeException ironforgeException) {
-            this.ironforgeException = ironforgeException;
+            super(ironforgeException);
         }
 
         @Override

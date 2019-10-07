@@ -6,6 +6,7 @@ import org.ironforge.base.client.CardBinFeignClient;
 import org.ironforge.bo.InvisibleCardBO;
 import org.ironforge.bo.IronforgeResp;
 import org.ironforge.err.IronforgeException;
+import org.ironforge.hystrix.BaseFeignClientFallback;
 import org.ironforge.hystrix.IronforgeFallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +18,10 @@ public class CardBinFallbackFactory extends IronforgeFallbackFactory<CardBinFeig
         return new CardBinFallback(ironforgeException);
     }
 
-    class CardBinFallback implements CardBinFeignClient {
-
-        private IronforgeException ironforgeException;
+    class CardBinFallback extends BaseFeignClientFallback implements CardBinFeignClient {
 
         public CardBinFallback(IronforgeException ironforgeException) {
-            this.ironforgeException = ironforgeException;
+            super(ironforgeException);
         }
 
         @Override

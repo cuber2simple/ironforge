@@ -5,6 +5,7 @@ import org.ironforge.base.bo.Country;
 import org.ironforge.base.client.CountryFeignClient;
 import org.ironforge.bo.IronforgeResp;
 import org.ironforge.err.IronforgeException;
+import org.ironforge.hystrix.BaseFeignClientFallback;
 import org.ironforge.hystrix.IronforgeFallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -16,13 +17,12 @@ public class CountryFallbackFactory extends IronforgeFallbackFactory<CountryFeig
         return new CountryFallback(ironforgeException);
     }
 
-    class CountryFallback implements CountryFeignClient {
-
-        private IronforgeException ironforgeException;
+    class CountryFallback extends BaseFeignClientFallback implements CountryFeignClient {
 
         public CountryFallback(IronforgeException ironforgeException) {
-            this.ironforgeException = ironforgeException;
+            super(ironforgeException);
         }
+
         @Override
         public IronforgeResp<Country> findByAlphaCode2(String alphaCode2) {
             return new IronforgeResp<>(ironforgeException);

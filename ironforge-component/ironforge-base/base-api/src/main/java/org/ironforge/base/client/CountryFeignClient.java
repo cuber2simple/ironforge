@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "ironforge-base", path = "/country", fallbackFactory = CountryFallbackFactory.class)
+@FeignClient(name = "base", path = "/country", fallbackFactory = CountryFallbackFactory.class)
 public interface CountryFeignClient {
     @GetMapping("/alphacode2/{alphaCode2}")
     IronforgeResp<Country> findByAlphaCode2(@PathVariable("alphaCode2") String alphaCode2);

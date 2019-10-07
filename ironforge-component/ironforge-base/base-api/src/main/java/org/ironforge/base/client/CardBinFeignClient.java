@@ -7,7 +7,7 @@ import org.ironforge.bo.IronforgeResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "ironforge-base", path = "/cardbin", fallbackFactory = CardBinFallbackFactory.class)
+@FeignClient(name = "base", path = "/cardbin", fallbackFactory = CardBinFallbackFactory.class)
 public interface CardBinFeignClient {
 
     @GetMapping("/fetchBinInfo")

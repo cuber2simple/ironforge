@@ -9,7 +9,12 @@ public enum IronforgeCode {
     PROCESS("0009", "进行中"),
     RETRY("0008", "请重试"),
     UNKNOWN("9999", "未知错误"),
-    INVALID_ARGUMENT("0002", "非法参数")
+    INVALID_ARGUMENT("0002", "非法参数"),
+    INVALID_TOKEN("0003", "token非法"),
+    INVALID_PATH("404", "访问的URL不存在"),
+    INVALID_METHOD("405", "方法不支持"),
+    INVALID_MEDIA_TYPE("415", "请求类型不支持"),
+    FORBIDDEN("403", "没有访问权限"),
     ;
     protected String code;
     protected String msg;

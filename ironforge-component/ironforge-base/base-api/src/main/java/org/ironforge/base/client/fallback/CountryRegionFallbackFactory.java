@@ -5,6 +5,7 @@ import org.ironforge.base.bo.CountryRegion;
 import org.ironforge.base.client.CountryRegionFeignClient;
 import org.ironforge.bo.IronforgeResp;
 import org.ironforge.err.IronforgeException;
+import org.ironforge.hystrix.BaseFeignClientFallback;
 import org.ironforge.hystrix.IronforgeFallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +19,9 @@ public class CountryRegionFallbackFactory extends IronforgeFallbackFactory<Count
         return new CountryRegionFallback(ironforgeException);
     }
 
-    class CountryRegionFallback implements CountryRegionFeignClient {
-        private IronforgeException ironforgeException;
-
+    class CountryRegionFallback extends BaseFeignClientFallback implements CountryRegionFeignClient {
         public CountryRegionFallback(IronforgeException ironforgeException) {
-            this.ironforgeException = ironforgeException;
+            super(ironforgeException);
         }
 
         @Override

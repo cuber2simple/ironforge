@@ -58,7 +58,7 @@ public class IronforgeResp<T> {
     }
 
     public static <T> IronforgeResp<T> status(IronforgeCode ironforgeCode) {
-        return new IronforgeResp(ironforgeCode);
+        return new IronforgeResp(ironforgeCode, null);
     }
 
     public static boolean isSuccess(IronforgeResp ironforgeResp) {

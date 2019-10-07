@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 import java.util.List;
 
-@FeignClient(name = "ironforge-base", path = "/countryRegion", fallbackFactory = CountryRegionFallbackFactory.class)
+@FeignClient(name = "base", path = "/countryRegion", fallbackFactory = CountryRegionFallbackFactory.class)
 public interface CountryRegionFeignClient {
 
     IronforgeResp<List<CountryRegion>> findByCountryNumber(String countryNumber);

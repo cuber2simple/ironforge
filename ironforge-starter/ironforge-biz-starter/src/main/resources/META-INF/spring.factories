@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration =\
-  org.ironforge.starter.conf.IronforgeStart2
+  org.ironforge.starter.conf.IronforgeStart2,\
+  org.ironforge.err.ErrorHandler

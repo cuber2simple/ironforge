@@ -1,6 +1,5 @@
 package org.ironforge.base.rest;
 
-import org.checkerframework.checker.units.qual.A;
 import org.ironforge.base.biz.CardBinBizService;
 import org.ironforge.base.bo.CardBin;
 import org.ironforge.base.client.CardBinFeignClient;
