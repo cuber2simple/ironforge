@@ -99,6 +99,41 @@ public class RoleServiceTest {
         kycRole.setRoleCode(channelRule.getRoleCode());
         kycRole.setResourceCode("poss_channel_kyc");
         resourceRoleService.save(kycRole);
+    }
 
+    @Test
+    public void insertApiRule(){
+//        TRole tRole = new TRole();
+//        tRole.setNamespace("");
+//        tRole.setSuperManager("false");
+//        tRole.setRoleCode("role_api_trade");
+//        tRole.setRoleName("role_api_trade");
+//        tRole.setRoleDesc("api权限，交易相关");
+//        roleService.save(tRole);
+//
+//        TResourceRole tResourceRole = new TResourceRole();
+//        tResourceRole.setRoleCode(tRole.getRoleCode());
+//        tResourceRole.setResourceCode("trade_sale");
+//        resourceRoleService.save(tResourceRole);
+//
+//        TResourceRole tResourceRole1 = new TResourceRole();
+//        tResourceRole1.setRoleCode(tRole.getRoleCode());
+//        tResourceRole1.setResourceCode("trade_auth");
+//        resourceRoleService.save(tResourceRole1);
+//
+//        TResourceRole tResourceRole2 = new TResourceRole();
+//        tResourceRole2.setRoleCode(tRole.getRoleCode());
+//        tResourceRole2.setResourceCode("trade_capture");
+//        resourceRoleService.save(tResourceRole2);
+
+//        TResourceRole tResourceRole4 = new TResourceRole();
+//        tResourceRole4.setRoleCode("role_api_trade");
+//        tResourceRole4.setResourceCode("trade_refund");
+//        resourceRoleService.save(tResourceRole4);
+//
+//        TResourceRole tResourceRole5 = new TResourceRole();
+//        tResourceRole5.setRoleCode("role_api_trade");
+//        tResourceRole5.setResourceCode("trade_auth_void");
+//        resourceRoleService.save(tResourceRole5);
     }
 }

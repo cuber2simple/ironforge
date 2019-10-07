@@ -46,8 +46,8 @@ public class ClientUtils {
         if (num < len) {
             return "" + chars[(int) num];
         }
-        int a = (int) num % len;
-        int b = (int) num / len;
+        int a = (int) (num % len);
+        int b = (int) (num / len);
         char e = chars[a];
         if (b >= len) {
             return "" + toStr(b) + e;

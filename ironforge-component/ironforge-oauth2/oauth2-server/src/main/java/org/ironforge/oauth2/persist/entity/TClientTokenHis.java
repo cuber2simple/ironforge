@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Table(name = "t_client_token_his", schema = "public", catalog = "oauth2")
 public class TClientTokenHis implements Serializable {
     private static final long serialVersionUID = 6241418966950678827L;
-    private Integer id;
+    private String id;
     private String appId;
     private String accessToken;
     private String refreshToken;
@@ -23,11 +23,11 @@ public class TClientTokenHis implements Serializable {
 
     @Id
     @Column(name = "id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -25,7 +25,7 @@ public class UserServiceTest {
     @Autowired
     private UserClientService userClientService;
 
-    @Test
+    //@Test
     public void testInsert() {
         TUser tUser = new TUser();
         tUser.setMerchantId("15600000001");
@@ -58,8 +58,8 @@ public class UserServiceTest {
         userService.save(channelOp);
     }
 
-    @Test
-    public void insertUserRole(){
+    //@Test
+    public void insertUserRole() {
         TUserRole tUserRole = new TUserRole();
         tUserRole.setUserId("1560000000100000002");
         tUserRole.setRoleCode("rol e_order");
@@ -81,21 +81,43 @@ public class UserServiceTest {
         userRoleService.save(tUserRole3);
     }
 
-    public void insertUserClient(){
+    //@Test
+    public void insertUserClient() {
         TUser clientIdUserId = new TUser();
-        clientIdUserId.setMerchantId("15600000001");
+        clientIdUserId.setMerchantId("15600000002");
         clientIdUserId.setPassword("12345678");
-        clientIdUserId.setEmail("client.poss@gmail.com");
-        clientIdUserId.setNickName("client_poss");
-        clientIdUserId.setUserName("client_poss");
+        clientIdUserId.setEmail("client_1.poss@gmail.com");
+        clientIdUserId.setNickName("client_1_merchant");
+        clientIdUserId.setUserName("client_1_merchant");
         clientIdUserId.setUserType("client");
-        clientIdUserId.setPhone("13248199193");
+        clientIdUserId.setPhone("13248199195");
         userService.save(clientIdUserId);
 
         TUserClient tUserClient = new TUserClient();
         tUserClient.setUserId(clientIdUserId.getUserId());
-        tUserClient.setAccessTokenValidity(24 * 3600);
-        tUserClient.setRefreshTokenValidity(24 * 3600);
+        userClientService.save(tUserClient);
+
+        TUser clientIdUserId1 = new TUser();
+        clientIdUserId1.setMerchantId("15600000003");
+        clientIdUserId1.setPassword("12345678");
+        clientIdUserId1.setEmail("client_2.poss@gmail.com");
+        clientIdUserId1.setNickName("client_2_merchant");
+        clientIdUserId1.setUserName("client_2_merchant");
+        clientIdUserId1.setUserType("client");
+        clientIdUserId1.setPhone("13248199196");
+        userService.save(clientIdUserId1);
+
+        TUserClient tUserClient1 = new TUserClient();
+        tUserClient1.setUserId(clientIdUserId1.getUserId());
+        userClientService.save(tUserClient1);
+    }
+
+    @Test
+    public void insertUserRoleApi(){
+//        TUserRole tUserRole2 = new TUserRole();
+//        tUserRole2.setUserId("1560000000299999999");
+//        tUserRole2.setRoleCode("role_api_trade");
+//        userRoleService.save(tUserRole2);
     }
 
 

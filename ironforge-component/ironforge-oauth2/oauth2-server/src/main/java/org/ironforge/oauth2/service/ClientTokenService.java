@@ -7,4 +7,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClientTokenService extends IronforgeService<ClientTokenRepository, TClientToken, Integer> {
+
 }

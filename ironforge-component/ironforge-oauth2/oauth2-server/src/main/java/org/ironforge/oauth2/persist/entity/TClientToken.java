@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Table(name = "t_client_token", schema = "public", catalog = "oauth2")
 public class TClientToken implements Serializable {
     private static final long serialVersionUID = 8315047938944658024L;
-    private Integer id;
+    private String id;
     private String appId;
     private String accessToken;
     private String refreshToken;
@@ -22,16 +22,12 @@ public class TClientToken implements Serializable {
     private LocalDateTime createDatetime;
 
     @Id
-    @SequenceGenerator(name="webuser_idwebuser_seq",
-            sequenceName="webuser_idwebuser_seq",
-            allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator="webuser_idwebuser_seq")    @Column(name = "id")
-    public Integer getId() {
+    @Column(name = "id")
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
