@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClientTokenRepository extends JpaRepository<TClientToken, Integer> {
+public interface ClientTokenRepository extends JpaRepository<TClientToken, String> {
+
+    TClientToken findByAppId(String appId);
 
 }

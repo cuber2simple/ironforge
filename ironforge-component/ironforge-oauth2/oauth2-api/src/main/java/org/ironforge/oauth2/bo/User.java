@@ -2,10 +2,12 @@ package org.ironforge.oauth2.bo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class User {
+public class User implements Serializable {
+
     private Integer id;
     private String merchantId;
     private String userId;
@@ -22,4 +24,5 @@ public class User {
     private String createUserId;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
+
 }

@@ -171,7 +171,8 @@ public class TClientToken implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);;
+        int result = (id != null ? id.hashCode() : 0);
+        ;
         result = 31 * result + (appId != null ? appId.hashCode() : 0);
         result = 31 * result + (accessToken != null ? accessToken.hashCode() : 0);
         result = 31 * result + (refreshToken != null ? refreshToken.hashCode() : 0);
@@ -184,5 +185,9 @@ public class TClientToken implements Serializable {
         result = 31 * result + (updateDatetime != null ? updateDatetime.hashCode() : 0);
         result = 31 * result + (createDatetime != null ? createDatetime.hashCode() : 0);
         return result;
+    }
+
+    public boolean isExpire() {
+        return LocalDateTime.now().isAfter(expireDatetime);
     }
 }

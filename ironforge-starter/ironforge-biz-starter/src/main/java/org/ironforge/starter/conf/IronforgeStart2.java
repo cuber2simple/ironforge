@@ -21,11 +21,6 @@ public class IronforgeStart2 {
     @Autowired
     private Environment environment;
 
-    @Bean
-    public CacheManager cacheManager(HazelcastInstance hazelcastInstance) {
-        log.debug("Starting HazelcastCacheManager");
-        return new com.hazelcast.spring.cache.HazelcastCacheManager(hazelcastInstance);
-    }
 
     @Bean
     public HazelcastInstance hazelcastInstance() {

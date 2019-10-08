@@ -10,7 +10,9 @@ import org.ironforge.constants.IronforgeCode;
 import org.ironforge.err.IronforgeException;
 import org.ironforge.oauth2.dto.TokenDTO;
 import org.ironforge.oauth2.enums.TokenType;
+import org.ironforge.oauth2.persist.entity.TClientToken;
 import org.ironforge.oauth2.persist.entity.TUser;
+import org.ironforge.oauth2.persist.entity.TUserClient;
 
 import java.security.Key;
 import java.time.LocalDateTime;
@@ -38,29 +40,48 @@ public class JWTUtils {
     public static final String CREATE_DATETIME = "createDateTime";
 
 
-    public static Token genToken(TUser user, int accessTokenValidity, int refreshTokenValidity) {
+    public static TClientToken genToken(TUser user, TUserClient tUserClient) {
         Map<String, Object> claimMaps = new HashMap<>(32);
         LocalDateTime now = LocalDateTime.now();
-        Token token = null;
+        TClientToken token = null;
         if (Objects.nonNull(user)) {
-            token = new Token();
-            claimMaps.put(TOKEN_ID, getTokenId(user.getUserId(), now));
+            token = new TClientToken();
+            String id = getTokenId(user.getUserId(), now);
+            claimMaps.put(TOKEN_ID, id);
             claimMaps.put(USER_ID, user.getUserId());
             claimMaps.put(TOKEN_TYPE, TokenType.access.getCode());
-            LocalDateTime expire = now.plus(accessTokenValidity, ChronoUnit.SECONDS);
+            LocalDateTime expire = now.plus(tUserClient.getAccessTokenValidity(), ChronoUnit.SECONDS);
             String create = formatter.format(now);
             String expireFormat = formatter.format(expire);
             claimMaps.put(EXPIRE_DATETIME, expireFormat);
             claimMaps.put(CREATE_DATETIME, create);
             String access = Jwts.builder().setClaims(claimMaps).signWith(key).compact();
             token.setAccessToken(access);
-            LocalDateTime refreshExpire = expire.plus(refreshTokenValidity, ChronoUnit.SECONDS);
+            LocalDateTime refreshExpire = expire.plus(tUserClient.getRefreshTokenValidity(), ChronoUnit.SECONDS);
             claimMaps.put(EXPIRE_DATETIME, formatter.format(refreshExpire));
             claimMaps.put(TOKEN_TYPE, TokenType.refresh.getCode());
             String refresh = Jwts.builder().setClaims(claimMaps).signWith(key).compact();
             token.setRefreshToken(refresh);
-            token.setCreateDatetime(create);
-            token.setExpireDatetime(expireFormat);
+            token.setCreateDatetime(now);
+            token.setUpdateDatetime(now);
+            token.setAccessToken(access);
+            token.setAppId(tUserClient.getAppId());
+            token.setAccessTokenValidity(tUserClient.getAccessTokenValidity());
+            token.setRefreshTokenValidity(tUserClient.getRefreshTokenValidity());
+            token.setExpireDatetime(refreshExpire);
+            token.setId(id);
+        }
+        return token;
+    }
+
+    public static Token genByTokenClient(TClientToken tClientToken) {
+        Token token = null;
+        if (Objects.nonNull(tClientToken)) {
+            token = new Token();
+            token.setAccessToken(tClientToken.getAccessToken());
+            token.setRefreshToken(tClientToken.getRefreshToken());
+            token.setCreateDatetime(formatter.format(tClientToken.getCreateDatetime()));
+            token.setExpireDatetime(formatter.format(tClientToken.getExpireDatetime()));
         }
         return token;
     }

@@ -6,6 +6,8 @@ import org.ironforge.service.IronforgeService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientTokenService extends IronforgeService<ClientTokenRepository, TClientToken, Integer> {
-
+public class ClientTokenService extends IronforgeService<ClientTokenRepository, TClientToken, String> {
+    public TClientToken findByAppId(String appId) {
+        return repository.findByAppId(appId);
+    }
 }
