@@ -7,9 +7,10 @@ import org.ironforge.err.IronforgeException;
 import org.ironforge.hystrix.BaseFeignClientFallback;
 import org.ironforge.hystrix.IronforgeFallbackFactory;
 import org.ironforge.oauth2.bo.Login;
+import org.ironforge.oauth2.bo.complex.FrontUser;
 import org.ironforge.oauth2.bo.complex.GatewayUser;
-import org.ironforge.oauth2.bo.complex.LoginAfterUser;
-import org.ironforge.oauth2.client.UserFeignClient;
+import org.ironforge.oauth2.bo.complex.ResetRole;
+import org.ironforge.oauth2.client.user.UserFeignClient;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,18 +28,21 @@ public class UserFallbackFactory extends IronforgeFallbackFactory<UserFeignClien
         }
 
         @Override
-        public IronforgeResp<Token> login(Login login) {
+        public IronforgeResp<GatewayUser> fetch(String token) {
             return new IronforgeResp<>(ironforgeException);
+
         }
 
         @Override
-        public IronforgeResp<GatewayUser> gateway() {
+        public IronforgeResp<FrontUser> fetch() {
             return new IronforgeResp<>(ironforgeException);
+
         }
 
         @Override
-        public IronforgeResp<LoginAfterUser> loginAfter() {
+        public IronforgeResp<Boolean> resetRole(ResetRole resetRole) {
             return new IronforgeResp<>(ironforgeException);
+
         }
     }
 }

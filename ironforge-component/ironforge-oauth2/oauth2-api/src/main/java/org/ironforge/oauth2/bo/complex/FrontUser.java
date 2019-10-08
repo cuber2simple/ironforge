@@ -11,7 +11,7 @@ import java.util.List;
 /**
  *  登陆之后得到用户拥有的菜单
  */
-public class LoginAfterUser {
+public class FrontUser {
 
     private User user;
 
