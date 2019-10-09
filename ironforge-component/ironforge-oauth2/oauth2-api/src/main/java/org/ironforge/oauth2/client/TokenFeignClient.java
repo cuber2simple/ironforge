@@ -3,11 +3,14 @@ package org.ironforge.oauth2.client;
 import org.ironforge.bo.IronforgeResp;
 import org.ironforge.bo.Token;
 import org.ironforge.oauth2.bo.Login;
+import org.ironforge.oauth2.bo.complex.GatewayUser;
 import org.ironforge.oauth2.client.fallback.UserCurdFallbackFactory;
 import org.ironforge.valid.anno.ValidCheck;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "oauth2", path = "/token", fallbackFactory = UserCurdFallbackFactory.class)
 public interface TokenFeignClient {
@@ -21,5 +24,13 @@ public interface TokenFeignClient {
     @ValidCheck
     IronforgeResp<Token> login(@RequestBody Login login);
 
+    /**
+     * 根据TOKEN查找用户
+     *
+     * @param token
+     * @return
+     */
+    @GetMapping("/gateway/fetch")
+    IronforgeResp<GatewayUser> fetch(@RequestParam("token") String token);
 
 }

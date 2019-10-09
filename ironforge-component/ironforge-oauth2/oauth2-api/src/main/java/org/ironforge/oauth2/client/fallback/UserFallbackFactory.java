@@ -27,11 +27,6 @@ public class UserFallbackFactory extends IronforgeFallbackFactory<UserFeignClien
             super(ironforgeException);
         }
 
-        @Override
-        public IronforgeResp<GatewayUser> fetch(String token) {
-            return new IronforgeResp<>(ironforgeException);
-
-        }
 
         @Override
         public IronforgeResp<FrontUser> fetch() {

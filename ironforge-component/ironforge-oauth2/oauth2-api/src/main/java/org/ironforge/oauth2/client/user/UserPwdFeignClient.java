@@ -21,7 +21,7 @@ public interface UserPwdFeignClient {
 
     @PutMapping("/reset/{userId}")
     /**
-     * 更改密码
+     * 重置密码
      * @param userId
      * @return
      */
