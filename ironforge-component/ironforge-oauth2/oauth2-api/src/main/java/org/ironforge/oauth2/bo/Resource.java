@@ -2,10 +2,12 @@ package org.ironforge.oauth2.bo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class Resource {
+public class Resource implements Serializable {
+    private static final long serialVersionUID = 8277302949965109249L;
     private Integer id;
     private String resourceCode;
     private String resourceName;

@@ -6,54 +6,52 @@ import org.ironforge.bo.PageResp;
 import org.ironforge.err.IronforgeException;
 import org.ironforge.hystrix.BaseFeignClientFallback;
 import org.ironforge.hystrix.IronforgeFallbackFactory;
+import org.ironforge.oauth2.bo.Resource;
 import org.ironforge.oauth2.bo.Role;
-import org.ironforge.oauth2.bo.User;
-import org.ironforge.oauth2.bo.UserQuery;
-import org.ironforge.oauth2.bo.complex.FrontUser;
-import org.ironforge.oauth2.client.user.UserFeignClient;
+import org.ironforge.oauth2.bo.RoleQuery;
+import org.ironforge.oauth2.client.RoleFeignClient;
 
 import java.util.List;
 
-public class UserFallbackFactory extends IronforgeFallbackFactory<UserFeignClient> {
+public class RoleFallbackFactory extends IronforgeFallbackFactory<RoleFeignClient> {
     @Override
-    public UserFeignClient createFallback(IronforgeException ironforgeException) {
-        return new UserFallback(ironforgeException);
+    public RoleFeignClient createFallback(IronforgeException ironforgeException) {
+        return new RoleFallback(ironforgeException);
     }
 
+    class RoleFallback extends BaseFeignClientFallback implements RoleFeignClient {
 
-    class UserFallback extends BaseFeignClientFallback implements UserFeignClient {
-
-        public UserFallback(IronforgeException ironforgeException) {
+        public RoleFallback(IronforgeException ironforgeException) {
             super(ironforgeException);
         }
 
         @Override
-        public IronforgeResp<User> add(User user) {
+        public IronforgeResp<Role> add(Role role) {
             return new IronforgeResp<>(ironforgeException);
         }
 
         @Override
-        public IronforgeResp<User> findByUserId(String userId) {
+        public IronforgeResp<Role> edit(Role role) {
             return new IronforgeResp<>(ironforgeException);
         }
 
         @Override
-        public PageResp<User> pageQuery(PageReq<UserQuery> pageReq) {
+        public PageResp<Role> pageQuery(PageReq<RoleQuery> pageReq) {
             return new PageResp<>(ironforgeException);
         }
 
         @Override
-        public IronforgeResp<FrontUser> fetch() {
+        public IronforgeResp<Role> findById(Integer id) {
             return new IronforgeResp<>(ironforgeException);
         }
 
         @Override
-        public IronforgeResp<Boolean> resetRole(String userId, List<String> roles) {
+        public IronforgeResp<Boolean> resetRole(String roleCode, List<String> resources) {
             return new IronforgeResp<>(ironforgeException);
         }
 
         @Override
-        public IronforgeResp<List<Role>> roles(String userId) {
+        public IronforgeResp<List<Resource>> roles(String roleCode) {
             return new IronforgeResp<>(ironforgeException);
         }
     }

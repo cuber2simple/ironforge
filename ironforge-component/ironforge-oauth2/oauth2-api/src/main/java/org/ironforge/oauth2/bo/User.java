@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class User implements Serializable {
 
+    private static final long serialVersionUID = 41409900135788957L;
     private Integer id;
     private String merchantId;
     private String userId;
