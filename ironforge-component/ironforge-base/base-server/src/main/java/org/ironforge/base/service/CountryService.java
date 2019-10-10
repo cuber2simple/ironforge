@@ -1,12 +1,24 @@
 package org.ironforge.base.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.ironforge.base.persist.entity.TCountry3166;
+import org.ironforge.base.persist.repo.CountryRepository;
+import org.ironforge.service.IronforgeService;
+import org.springframework.stereotype.Component;
 
-public interface CountryService {
+@Component
+@Slf4j
+public class CountryService extends IronforgeService<CountryRepository, TCountry3166, Integer> {
 
-  TCountry3166 findByAlphaCode2(String alphaCode2);
+    public TCountry3166 findByAlphaCode2(String alphaCode2) {
+        return repository.findByAlphaCode2(alphaCode2);
+    }
 
-  TCountry3166 findByAlphaCode3(String alphaCode3);
+    public TCountry3166 findByAlphaCode3(String alphaCode3) {
+        return repository.findByAlphaCode3(alphaCode3);
+    }
 
-  TCountry3166 findByCountryNumber(String countryNumber);
+    public TCountry3166 findByNumberCode(String countryNumber) {
+        return repository.findByNumberCode(countryNumber);
+    }
 }

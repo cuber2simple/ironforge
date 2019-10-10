@@ -1,16 +1,16 @@
 package org.ironforge.biz;
 
 import org.ironforge.service.IronforgeService;
-import org.ironforge.transfer.AbstractTransfer;
+import org.ironforge.transfer.BeanCopyTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class AbstractBizService<Service extends IronforgeService<? extends JpaRepository<T, ID>, T, ID>, T, ID, BO> extends AbstractTransfer<T, BO> implements IronforgeBizService<BO, ID> {
+public class BeanCopyBizService<Service extends IronforgeService<? extends JpaRepository<T, ID>, T, ID>, T, ID, BO> extends BeanCopyTransfer<T, BO> implements IronforgeBizService<BO, ID> {
 
     @Autowired(required = false)
     protected Service service;
 
-    public AbstractBizService(Class<T> tClass, Class<BO> boClass) {
+    public BeanCopyBizService(Class<T> tClass, Class<BO> boClass) {
         super(tClass, boClass);
     }
 

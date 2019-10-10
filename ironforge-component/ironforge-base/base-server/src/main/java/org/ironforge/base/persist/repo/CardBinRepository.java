@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CardBinRepository extends JpaRepository<TCardBin, Long> {
+public interface CardBinRepository extends JpaRepository<TCardBin, Integer> {
   TCardBin findByCardBin(String cardBin);
 }

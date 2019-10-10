@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CountryRegionRepository extends JpaRepository<TCountryRegion, Long> {
+public interface CountryRegionRepository extends JpaRepository<TCountryRegion, Integer> {
   List<TCountryRegion> findByCountryNumber(String countryNumber);
 }

@@ -25,7 +25,7 @@ public class CountryRest implements CountryFeignClient {
     }
 
     @Override
-    public IronforgeResp<Country> findByCountryNumber(String countryNumber) {
-        return IronforgeResp.success(countryBizService.findByCountryNumber(countryNumber));
+    public IronforgeResp<Country> findByCountryNumber(String numberCode) {
+        return IronforgeResp.success(countryBizService.findByNumberCode(numberCode));
     }
 }

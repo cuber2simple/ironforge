@@ -14,13 +14,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class CardBinServiceTest {
 
-  @Autowired private CardBinService cardBinService;
+    @Autowired
+    private CardBinService cardBinService;
 
-  @Test
-  public void testQuery() {
-    TCardBin matchCardBin = cardBinService.findMatchCardBin("46938031");
-    log.info("查询出来的CARDBIN为:{}", matchCardBin);
-    matchCardBin = cardBinService.findMatchCardBin("46938032");
-    log.info("查询出来的CARDBIN为:{}", matchCardBin);
-  }
+    @Test
+    public void testQuery() {
+        TCardBin matchCardBin = cardBinService.findMatchCardBin("46938031");
+        log.info("查询出来的CARDBIN为:{}", matchCardBin);
+        matchCardBin = cardBinService.findMatchCardBin("46938032");
+        log.info("查询出来的CARDBIN为:{}", matchCardBin);
+    }
 }

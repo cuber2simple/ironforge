@@ -6,20 +6,15 @@ import org.ironforge.base.biz.CardBinBizService;
 import org.ironforge.base.bo.CardBin;
 import org.ironforge.base.persist.entity.TCardBin;
 import org.ironforge.base.service.CardBinService;
+import org.ironforge.biz.BeanCopyBizService;
 import org.ironforge.bo.InvisibleCardBO;
-import org.ironforge.transfer.BeanCopyTransfer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
 @Service
 @Slf4j
-public class CardBinBizServiceImpl extends BeanCopyTransfer<TCardBin, CardBin>
-        implements CardBinBizService {
-
-    @Autowired
-    private CardBinService cardBinService;
+public class CardBinBizServiceImpl extends BeanCopyBizService<CardBinService, TCardBin, Integer, CardBin> implements CardBinBizService {
 
     public CardBinBizServiceImpl() {
         super(TCardBin.class, CardBin.class);
@@ -31,7 +26,7 @@ public class CardBinBizServiceImpl extends BeanCopyTransfer<TCardBin, CardBin>
         CardBin result = null;
         if (Objects.nonNull(invisibleCardBO)) {
             String cardNo = invisibleCardBO.getCardNo();
-            TCardBin matchCardBin = cardBinService.findMatchCardBin(StringUtils.substring(cardNo, 0, 8));
+            TCardBin matchCardBin = service.findMatchCardBin(StringUtils.substring(cardNo, 0, 8));
             result = this.entityTransferBO(matchCardBin);
         }
         log.info("查询出来的结果为:{}", result);

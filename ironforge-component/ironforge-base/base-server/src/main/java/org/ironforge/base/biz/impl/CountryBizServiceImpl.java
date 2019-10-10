@@ -5,45 +5,32 @@ import org.ironforge.base.biz.CountryBizService;
 import org.ironforge.base.bo.Country;
 import org.ironforge.base.persist.entity.TCountry3166;
 import org.ironforge.base.service.CountryService;
-import org.ironforge.transfer.BeanCopyTransfer;
+import org.ironforge.biz.BeanCopyBizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class CountryBizServiceImpl extends BeanCopyTransfer<TCountry3166, Country>
-    implements CountryBizService {
+public class CountryBizServiceImpl extends BeanCopyBizService<CountryService, TCountry3166, Integer, Country>
+        implements CountryBizService {
 
-  @Autowired private CountryService countryService;
 
-  public CountryBizServiceImpl() {
-    super(TCountry3166.class, Country.class);
-  }
+    public CountryBizServiceImpl() {
+        super(TCountry3166.class, Country.class);
+    }
 
-  @Override
-  public Country findByAlphaCode2(String alphaCode2) {
-    log.info("接受国家查询的2字码为:{}", alphaCode2);
-    TCountry3166 tCountry3166 = countryService.findByAlphaCode2(alphaCode2);
-    Country country = this.entityTransferBO(tCountry3166);
-    log.info("查询到的国家为:{}", country);
-    return country;
-  }
+    @Override
+    public Country findByAlphaCode2(String alphaCode2) {
+        return entityTransferBO(service.findByAlphaCode2(alphaCode2));
+    }
 
-  @Override
-  public Country findByAlphaCode3(String alphaCode3) {
-    log.info("接受国家查询的3字码为:{}", alphaCode3);
-    TCountry3166 tCountry3166 = countryService.findByAlphaCode3(alphaCode3);
-    Country country = this.entityTransferBO(tCountry3166);
-    log.info("查询到的国家为:{}", country);
-    return country;
-  }
+    @Override
+    public Country findByAlphaCode3(String alphaCode3) {
+      return entityTransferBO(service.findByAlphaCode3(alphaCode3));
+    }
 
-  @Override
-  public Country findByCountryNumber(String countryNumber) {
-    log.info("接受国家查询的数字码为:{}", countryNumber);
-    TCountry3166 tCountry3166 = countryService.findByCountryNumber(countryNumber);
-    Country country = this.entityTransferBO(tCountry3166);
-    log.info("查询到的国家为:{}", country);
-    return country;
-  }
+    @Override
+    public Country findByNumberCode(String numberCode) {
+      return entityTransferBO(service.findByNumberCode(numberCode));
+    }
 }
