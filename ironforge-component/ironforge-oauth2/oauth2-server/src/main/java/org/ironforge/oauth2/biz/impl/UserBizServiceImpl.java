@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -28,13 +29,13 @@ public class UserBizServiceImpl extends BeanCopyTransfer<TUser, User> implements
 
     @Override
     public User addUser(User user) {
-        userService.save(boTransferEntity(user));
-        return null;
+        TUser save = userService.save(boTransferEntity(user));
+        return entityTransferBO(save);
     }
 
     @Override
     public User findByUserId(String userId) {
-        return null;
+        return entityTransferBO(userService.findByUserId(userId));
     }
 
     @Override
@@ -44,7 +45,13 @@ public class UserBizServiceImpl extends BeanCopyTransfer<TUser, User> implements
 
     @Override
     public FrontUser fetch(String userId) {
-        return null;
+        FrontUser frontUser = null;
+        User user = findByUserId(userId);
+        if(Objects.nonNull(user)){
+            frontUser = new FrontUser();
+            frontUser.setUser(user);
+        }
+        return frontUser;
     }
 
     @Override

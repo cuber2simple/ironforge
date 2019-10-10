@@ -13,6 +13,10 @@ public class IronforgeService<Repository extends JpaRepository<T, ID>, T, ID> {
     @Autowired(required = false)
     protected Repository repository;
 
+    public Repository repo() {
+        return repository;
+    }
+
     public T save(T entity) {
         ReflectUtils.fillCreateInfo(entity);
         return repository.save(entity);
