@@ -11,8 +11,6 @@ import java.util.List;
 
 public interface UserBizService {
 
-    User addUser(User user);
-
     User findByUserId(String userId);
 
     PageResp<User> pageQuery(PageReq<UserQuery> pageReq);

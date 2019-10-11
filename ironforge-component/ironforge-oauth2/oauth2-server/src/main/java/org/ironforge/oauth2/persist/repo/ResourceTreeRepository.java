@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResourceTreeRepository extends JpaRepository<TResourceTree, Integer> {
+
+    int deleteByResourceCode(String resourceCode);
 }

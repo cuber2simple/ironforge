@@ -27,11 +27,6 @@ public class UserBizServiceImpl extends BeanCopyTransfer<TUser, User> implements
         super(TUser.class, User.class);
     }
 
-    @Override
-    public User addUser(User user) {
-        TUser save = userService.save(boTransferEntity(user));
-        return entityTransferBO(save);
-    }
 
     @Override
     public User findByUserId(String userId) {

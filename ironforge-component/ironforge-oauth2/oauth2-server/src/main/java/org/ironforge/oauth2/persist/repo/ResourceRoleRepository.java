@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResourceRoleRepository extends JpaRepository<TResourceRole, Integer> {
+
+    int deleteByRoleCode(String roleCode);
+
 }

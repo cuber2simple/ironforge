@@ -19,6 +19,14 @@ public class TResourceTree implements Serializable {
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
 
+    public TResourceTree() {
+    }
+
+    public TResourceTree(String resourceCode, String subResourceCode) {
+        this.resourceCode = resourceCode;
+        this.subResourceCode = subResourceCode;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

@@ -18,6 +18,15 @@ public class TResourceRole implements Serializable {
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
 
+    public TResourceRole() {
+
+    }
+
+    public TResourceRole(String resourceCode, String roleCode) {
+        this.resourceCode = resourceCode;
+        this.roleCode = roleCode;
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")

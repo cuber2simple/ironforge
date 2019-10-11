@@ -7,4 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ResourceRoleService extends IronforgeService<ResourceRoleRepository, TResourceRole, Integer> {
+
+    public int deleteByRoleCode(String roleCode){
+        return repository.deleteByRoleCode(roleCode);
+    }
 }

@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ResourceTreeService extends IronforgeService<ResourceTreeRepository, TResourceTree, Integer> {
+    public int deleteByResourceCode(String resourceCode) {
+        return repository.deleteByResourceCode(resourceCode);
+    }
 }

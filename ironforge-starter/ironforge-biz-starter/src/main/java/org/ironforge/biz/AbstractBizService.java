@@ -5,7 +5,7 @@ import org.ironforge.transfer.AbstractTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class AbstractBizService<Service extends IronforgeService<? extends JpaRepository<T, ID>, T, ID>, T, ID, BO> extends AbstractTransfer<T, BO> implements IronforgeBizService<BO, ID> {
+public abstract class AbstractBizService<Service extends IronforgeService<? extends JpaRepository<T, ID>, T, ID>, T, ID, BO> extends AbstractTransfer<T, BO> implements IronforgeBizService<BO, T, ID> {
 
     @Autowired(required = false)
     protected Service service;

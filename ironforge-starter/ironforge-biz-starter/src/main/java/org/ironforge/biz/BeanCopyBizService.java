@@ -5,7 +5,7 @@ import org.ironforge.transfer.BeanCopyTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class BeanCopyBizService<Service extends IronforgeService<? extends JpaRepository<T, ID>, T, ID>, T, ID, BO> extends BeanCopyTransfer<T, BO> implements IronforgeBizService<BO, ID> {
+public class BeanCopyBizService<Service extends IronforgeService<? extends JpaRepository<T, ID>, T, ID>, T, ID, BO> extends BeanCopyTransfer<T, BO> implements IronforgeBizService<BO, T, ID> {
 
     @Autowired(required = false)
     protected Service service;
