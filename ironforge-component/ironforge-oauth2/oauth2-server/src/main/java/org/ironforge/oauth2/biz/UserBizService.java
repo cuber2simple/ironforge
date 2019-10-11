@@ -1,15 +1,17 @@
 package org.ironforge.oauth2.biz;
 
+import org.ironforge.biz.IronforgeBizService;
 import org.ironforge.bo.PageReq;
 import org.ironforge.bo.PageResp;
 import org.ironforge.oauth2.bo.Role;
 import org.ironforge.oauth2.bo.User;
 import org.ironforge.oauth2.bo.UserQuery;
 import org.ironforge.oauth2.bo.complex.FrontUser;
+import org.ironforge.oauth2.persist.entity.TUser;
 
 import java.util.List;
 
-public interface UserBizService {
+public interface UserBizService extends IronforgeBizService<User, TUser, Integer> {
 
     User findByUserId(String userId);
 

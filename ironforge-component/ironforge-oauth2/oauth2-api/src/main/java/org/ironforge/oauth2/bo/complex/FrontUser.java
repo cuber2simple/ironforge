@@ -17,7 +17,11 @@ public class FrontUser {
 
     private List<Role> ownRoles;
     /**
-     *  拥有的菜单
+     * 拥有的菜单
      */
     private List<Resource> ownMenus;
+    /**
+     * 是否超级用户
+     */
+    private boolean superUser;
 }

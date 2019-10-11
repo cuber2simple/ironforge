@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class Resource implements Serializable {
@@ -23,4 +24,6 @@ public class Resource implements Serializable {
     private LocalDateTime expireDatetime;
     private LocalDateTime updateDatetime;
     private LocalDateTime createDatetime;
+
+    private List<Resource> subResource;
 }

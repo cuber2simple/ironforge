@@ -1,6 +1,6 @@
 package org.ironforge.constants;
 
-public class TraceConstants {
+public class TraceConstant {
     /**
      * 访问用户的用户ID
      */
