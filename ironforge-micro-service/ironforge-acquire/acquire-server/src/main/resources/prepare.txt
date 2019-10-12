@@ -13,3 +13,7 @@
 	   merchant_id		varchar(64)
 	   customer_id		varchar(64)
 	   test				true
+https://help.shopify.com/en/api/reference/events/event#orders-2019-10
+
+
+https://help.shopify.com/en/api/reference/events/webhook#
