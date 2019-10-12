@@ -1,0 +1,15 @@
+1.订单表
+ 状态  placed    	下单  	【】
+	   re_opened 	重新打开
+	   cancelled 	取消  	【用户未支付关闭收银台/(placed/re_opened订单后三分钟自动取消】
+	   failure  	失败
+	   pending  	支付中	【不可以重新打开】
+	   success  	成功  	【不可以重新打开】
+	   closed   	关闭  	【不可以重新打开】 【不可以撤销和退款/撤销和全额退款触发】【成功交易】
+
+
+	   order_id			varchar(64)
+	   token			varchar(1024)
+	   merchant_id		varchar(64)
+	   customer_id		varchar(64)
+	   test				true
