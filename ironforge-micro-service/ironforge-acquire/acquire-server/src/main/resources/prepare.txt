@@ -13,7 +13,11 @@
 	   merchant_id		varchar(64)
 	   customer_id		varchar(64)
 	   test				true
+	   req_id           varchar(256)
+
 https://help.shopify.com/en/api/reference/events/event#orders-2019-10
 
 
 https://help.shopify.com/en/api/reference/events/webhook#
+
+https://docs.adyen.com/checkout/api-only#step-1-get-available-payment-methods

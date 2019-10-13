@@ -45,10 +45,17 @@ public class ResourceBizServiceImpl extends BeanCopyBizService<ResourceService, 
         return true;
     }
 
+    @Override
+    public List<Resource> findSubElements(String resourceCode, String userId) {
+        return null;
+    }
+
 
     public static TResourceTree instance(String resourceCode, String code) {
         return new TResourceTree(resourceCode, code);
     }
+
+
 
 
 }

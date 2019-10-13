@@ -24,4 +24,12 @@ public interface ResourceBizService extends IronforgeBizService<Resource, TResou
      */
     boolean resetSubElements(String resourceCode, List<String> resourceCodes);
 
+    /**
+     * 查找该用户下，页面所有元素
+     * @param resourceCode
+     * @param userId
+     * @return
+     */
+    List<Resource> findSubElements(String resourceCode, String userId);
+
 }

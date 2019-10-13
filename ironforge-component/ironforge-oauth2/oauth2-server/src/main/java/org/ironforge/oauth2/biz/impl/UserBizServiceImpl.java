@@ -56,7 +56,7 @@ public class UserBizServiceImpl extends BeanCopyBizService<UserService, TUser, I
                 Optional<Role> superUser = roles.stream()
                         .filter(role -> IronforgeConstant.TRUE_STRING.equals(role.getSuperManager())).findFirst();
                 frontUser.setSuperUser(superUser.isPresent());
-
+                
             }
         }
         return frontUser;
