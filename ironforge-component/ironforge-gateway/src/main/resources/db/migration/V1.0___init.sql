@@ -65,7 +65,7 @@ comment on column t_ip_filter.update_datetime		is '更新时间';
 comment on column t_ip_filter.expire_datetime		is '过期时间';
 comment on column t_ip_filter.create_datetime		is '创建时间';
 
-CREATE TABLE IF NOT EXISTS t_client (
+CREATE TABLE IF NOT EXISTS t_app (
     id					    SERIAL primary key,
     user_id                 VARCHAR(64),
     app_id  				VARCHAR(64),
@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS t_client (
     access_token_validity   INTEGER,
     refresh_token_validity  INTEGER,
     notice_channel_url      VARCHAR(2048),
+    home_location           VARCHAR(2048),
     status					VARCHAR(64),
     update_user_id    		VARCHAR(64),
     create_user_id    		VARCHAR(64),
@@ -83,26 +84,26 @@ CREATE TABLE IF NOT EXISTS t_client (
     create_datetime         TIMESTAMP WITHOUT TIME ZONE
 );
 
-CREATE UNIQUE INDEX idx_t_user_client_user_id ON t_user_client USING btree(user_id);
+CREATE UNIQUE INDEX idx_t_app_user_id ON t_app USING btree(user_id);
 
-CREATE UNIQUE INDEX idx_t_user_client_app_id ON t_user_client USING btree(app_id);
+CREATE UNIQUE INDEX idx_t_app_id ON t_app USING btree(app_id);
 
-comment on table  t_user_client						is '资源角色关联表';
-comment on column t_user_client.id					is '关联ID';
-comment on column t_user_client.user_id		        is '用户ID';
-comment on column t_user_client.app_id			    is 'clientId';
-comment on column t_user_client.app_secret		    is 'client密钥';
-comment on column t_user_client.rsa_public_key		is 'client公钥';
-comment on column t_user_client.rsa_private_key		is 'client私钥';
-comment on column t_user_client.access_token_validity	is 'token过期事件';
-comment on column t_user_client.refresh_token_validity	is 'refresh过期事件';
-comment on column t_user_client.notice_channel_url		is '通知渠道URL';
-comment on column t_user_client.status              is '状态';
-comment on column t_user_client.update_user_id		is '更新操作员';
-comment on column t_user_client.create_user_id		is '创建操作员';
-comment on column t_user_client.update_datetime		is '更新时间';
-comment on column t_user_client.expire_datetime		is '过期时间';
-comment on column t_user_client.create_datetime		is '创建时间';
+comment on table  t_app						    is '资源角色关联表';
+comment on column t_app.id					    is '关联ID';
+comment on column t_app.user_id		            is '用户ID';
+comment on column t_app.app_id			        is 'clientId';
+comment on column t_app.app_secret		        is 'client密钥';
+comment on column t_app.rsa_public_key		    is 'client公钥';
+comment on column t_app.rsa_private_key		    is 'client私钥';
+comment on column t_app.access_token_validity	is 'token过期事件';
+comment on column t_app.refresh_token_validity	is 'refresh过期事件';
+comment on column t_app.notice_channel_url		is '通知渠道URL';
+comment on column t_app.status                  is '状态';
+comment on column t_app.update_user_id		    is '更新操作员';
+comment on column t_app.create_user_id		    is '创建操作员';
+comment on column t_app.update_datetime		    is '更新时间';
+comment on column t_app.expire_datetime		    is '过期时间';
+comment on column t_app.create_datetime		    is '创建时间';
 
 CREATE TABLE IF NOT EXISTS T_CLIENT_TOKEN(
     id                      VARCHAR(64) primary key,

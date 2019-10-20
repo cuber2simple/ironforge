@@ -1,15 +1,22 @@
-CREATE TABLE IF NOT EXISTS t_order (
+CREATE TABLE IF NOT EXISTS t_acquire_order (
     id                      VARCHAR(64) not null,
+    origin_id               VARCHAR(64) not null,
     merchant_id             VARCHAR(64) not null,
     customer_id             VARCHAR(64) not null,
-    req_id                  VARCHAR(256) not null,
-    user_name               VARCHAR(256) not null,
-    password                VARCHAR(1024),
-    nick_name               VARCHAR(256),
-    email                   VARCHAR(256),
-    phone                   VARCHAR(32),
-    employee_no             VARCHAR(64),
-    avatar                  VARCHAR(256),
+    reference_id            VARCHAR(256) not null,
+    origin_reference_id     VARCHAR(256) not null,
+    order_type              VARCHAR(32) not null,
+    amount                  numeric(24,6) not null,
+    currency                VARCHAR(6),
+    available_amount        numeric(24,6) not null,
+    platform                VARCHAR(32),
+    country_code            VARCHAR(32),
+    device_fingerprint      VARCHAR(256),
+    pay_method              VARCHAR(256),
+    interaction_method      VARCHAR(256),
+    locale                  VARCHAR(256),
+    return_url              varchar(256),
+    merchant_setting_code   VARCHAR(256),
     status                  VARCHAR(64),
     update_user_id          VARCHAR(64),
     create_user_id          VARCHAR(64),
@@ -17,23 +24,23 @@ CREATE TABLE IF NOT EXISTS t_order (
     create_datetime         TIMESTAMP WITHOUT TIME ZONE
 );
 
-comment on table  t_order						    is '用户表/暂不考虑';
-comment on column t_order.id						is '用户ID';
-comment on column t_order.merchant_id               is '商户id';
-comment on column t_order.user_id					is '用户id';
-comment on column t_order.user_type					is 'operator/client 操作员/机器';
-comment on column t_order.user_name					is '用户名称';
-comment on column t_order.password					is '密码';
-comment on column t_order.nick_name				    is '昵称';
-comment on column t_order.email					    is '邮箱';
-comment on column t_order.phone					    is '电话号码';
-comment on column t_order.employee_no			    is '员工号';
-comment on column t_order.avatar					is '用户头像';
-comment on column t_order.status              	    is '状态';
-comment on column t_order.update_user_id			is '更新操作员';
-comment on column t_order.create_user_id			is '创建操作员';
-comment on column t_order.update_datetime		    is '更新时间';
-comment on column t_order.create_datetime		    is '创建时间';
+comment on table  t_acquire_order						    is '用户表/暂不考虑';
+comment on column t_acquire_order.id						is '用户ID';
+comment on column t_acquire_order.merchant_id               is '商户id';
+comment on column t_acquire_order.user_id					is '用户id';
+comment on column t_acquire_order.user_type					is 'operator/client 操作员/机器';
+comment on column t_acquire_order.user_name					is '用户名称';
+comment on column t_acquire_order.password					is '密码';
+comment on column t_acquire_order.nick_name				    is '昵称';
+comment on column t_acquire_order.email					    is '邮箱';
+comment on column t_acquire_order.phone					    is '电话号码';
+comment on column t_acquire_order.employee_no			    is '员工号';
+comment on column t_acquire_order.avatar					is '用户头像';
+comment on column t_acquire_order.status              	    is '状态';
+comment on column t_acquire_order.update_user_id			is '更新操作员';
+comment on column t_acquire_order.create_user_id			is '创建操作员';
+comment on column t_acquire_order.update_datetime		    is '更新时间';
+comment on column t_acquire_order.create_datetime		    is '创建时间';
 
 CREATE TABLE IF NOT EXISTS t_group (
     id			            SERIAL primary key,

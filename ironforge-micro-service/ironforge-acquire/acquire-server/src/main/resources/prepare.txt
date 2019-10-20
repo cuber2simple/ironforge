@@ -15,6 +15,217 @@
 	   test				true
 	   req_id           varchar(256)
 
+订单表  t_acquire_order
+	   order_id                     varchar(64)      订单ID
+	   origin_order_id              varchar(64)      原始订单ID
+	   customer_id                  varchar(32)      客户ID
+	   merchant_id                  varchar(32)      商户ID
+	   order_interaction            varchar(32)      订单交易类型  api/ios_sdk/android/h5
+	   order_type                   varchar(16)      订单类型 auth/capture/void/refund_void/sale/refund/recurring
+	   order_pay_method             varchar(64)      JCB/VISA/ALIPAY/.....
+       order_pay_method_type        varchar(64)      app/qrcode/scheme_normal/scheme_3d/scheme_3d2/pos/
+       order_amount                 numeric(24,6)    订单金额
+       order_currency               varchar(3)       订单币种
+       order_available_amount       numeric(24,6)    订单剩余金额
+       order_return_url             varchar(128)     订单跳转地址
+       order_status                 varchar(32)      订单状态(placed/reopened/challenge_shopper/identify_shopper/present_2_shopper/recurring/redirect_shopper/cancelled/failure/pending/success/closed)
+       order_expire_validity        numeric(6)       订单过期分钟
+       order_auth_key               varchar(16)      订单授权key
+       merchant_reference_id        varchar(64)      商户订单号
+       merchant_origin_reference_id varchar(64)      商户原始订单号
+       merchant_setting_code        varchar(32)      商户设置code
+       merchant_catagory_code       varchar(6)       商户类别码
+       shopper_email                varchar(128)     买家邮箱地址
+       shopper_mobile               varchar(32)      买家手机号
+       shopper_reference_id         varchar(32)      买家ID
+       shopper_country_code         varchar(2)       买家国家
+       shopper_locale               varchar(16)      买家语言
+       shopper_device_fingerprint   varchar(128)     设备指纹
+       risk_score                   numeric(12,4)    风控评分
+       risk_strategy                varchar(32)      风控策略
+       concurrency_trace_id         varchar(16)      当前的trace_id
+       resp_code                    varchar(4)       当前响应码
+       resp_msg                     varchar(128)     响应消息
+       resp_action                  jsonb            响应得action(qrcode/redirect/3d2_fingerprint/3d2_challenge/voucher)
+       create_time                  TIMESTAMP WITHOUT TIME ZONE   创建时间
+       update_time                  TIMESTAMP WITHOUT TIME ZONE   更新时间
+       cancel_time                  TIMESTAMP WITHOUT TIME ZONE   取消时间(shopper主动取消)
+       complete_time                TIMESTAMP WITHOUT TIME ZONE   完成时间(failure,success)
+       close_time                   TIMESTAMP WITHOUT TIME ZONE   关闭时间(商户主动关闭/到期关闭)
+订单trace表  同订单表,  每次更新都留下之前的记录
+
+订单地址表 t_acquire_address
+        address_id                   varchar(32)      地址ID
+        order_id                     varchar(64)      订单ID
+        shopper_reference_id         varchar(32)      买家ID
+        address_type                 varchar(16)      地址类型billing/shipping
+        merchant_address_reference   varchar(32)      商户地址ID
+        first_name                   varchar(128)     名
+        last_name                    varchar(128)     姓
+        company                      varchar(256)     公司
+        address1                     varchar(256)     地址1
+        address2                     varchar(256)     地址2
+        city                         varchar(128)     城市
+        province                     varchar(128)     省份
+        province_code                varchar(8)       省份编码
+        country                      varchar(128)     国家
+        country_code                 varchar(4)       国家编码
+        postcode                     varchar(20)      邮编
+        phone                        varchar(32)      手机号
+        address_name                 varchar(128)     地址名称
+        status                       varchar(32)      状态  active/inactive
+        create_time                  TIMESTAMP WITHOUT TIME ZONE   创建时间
+        update_time                  TIMESTAMP WITHOUT TIME ZONE   更新时间
+
+订单支付方式 t_acquire_payment_method
+    payment_id              varchar(32)      支付方式ID
+    order_id                varchar(64)      订单ID
+    shopper_reference_id    varchar(32)      买家ID
+    merchant_id             varchar(32)      商户ID
+    scheme                  varchar(5)       是否是卡支付 true/false
+    payment_method_type     varchar(64)      app/qrcode/scheme_normal/scheme_3d/scheme_3d2/pos/
+    payment_method          varchar(64)      JCB/VISA/ALIPAY/.....
+    card_scheme             varchar(32)      VISA/JCB/AE/and so on
+    card_mask               varchar(32)      卡做mask
+    payment_method_content  jsonb            支付内容
+    status                  varchar(32)      状态  active/inactive
+    create_time             TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time             TIMESTAMP WITHOUT TIME ZONE   更新时间
+订单商品列表信息 t_acquire_line
+    line_id                 varchar(32)      支付方式ID
+    order_id                varchar(64)      订单ID
+    shopper_reference_id    varchar(32)      买家ID
+    merchant_id             varchar(32)      商户ID
+    amount_excluding_tax    numeric(24,6)    商品不包含税部分
+    amount_including_tax    numeric(24,6)    商品包含税部分
+    description             varchar(256)     商品描述
+    id                      varchar(64)      商品ID
+    quantity                numeric(24,6)    订单数量
+    tax_amount              numeric(24,6)    税收金额
+    tax_category            varchar(32)      税收条目
+    tax_percentage          numeric(24,6)    税收百分比
+    gift                    varchar(5)       true/false
+    currency                varchar(3)       币种
+    status                  varchar(32)      状态  active/inactive
+    create_time             TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time             TIMESTAMP WITHOUT TIME ZONE   更新时间
+订单额外信息 t_acquire_order_flow_extra
+    line_id                     varchar(32)      支付方式ID
+    order_id                    varchar(64)      订单ID
+    shopper_reference_id        varchar(32)      买家ID
+    merchant_id                 varchar(32)      商户ID
+    3d2_account_info            jsonb            3d2账户信息
+    3d2_browser_info            jsonb            3d2浏览器信息
+    3d2_request_data            jsonb            3d2需要得参数
+    3d2_merchant_risk_indicator jsonb            3d2商户信息
+    risk_info                   jsonb            3d收集得参数
+    longitude                   varchar(32)      经度
+    latitude                    varchar(32)      维度
+    platform                    varchar(32)      平台(web/ios/android)
+    status                      varchar(32)      状态  active/inactive
+    create_time                 TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time                 TIMESTAMP WITHOUT TIME ZONE   更新时间
+卡中心表 t_scheme_info
+    scheme_id               varchar(32)      卡ID
+    create_order_id         varchar(64)      创建得订单ID
+    card_scheme             varchar(32)      VISA/JCB/AE/and so on
+    card_mask               varchar(32)      卡做mask
+    card_county             varchar(4)       卡国家
+    card_no                 varchar(128)     卡号
+    card_expire_month       varchar(128)     卡过期月
+    card_expire_year        varchar(128)     卡过期年
+    card_holder_name        varchar(128)     持卡人姓名
+    card_cvv                varchar(128)     持卡人CVV
+    full_md5_value          varchar(128)     持卡人姓名
+    create_time             TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time             TIMESTAMP WITHOUT TIME ZONE   更新时间
+卡事件表 t_scheme_event
+    event_id                varchar(32)      事件ID
+    scheme_id               varchar(32)      支付方式ID
+    card_no                 varchar(128)     卡号
+    order_id                varchar(64)      订单ID
+    merchant_id             varchar(32)      商户ID
+    event_type              varchar(32)      时间类型/transaction_success/transaction_refuse/transaction_chargeback/transaction_3d_success/transaction_3d_refuse
+    device_fingerprint      varchar(128)     设备指纹
+    longitude               varchar(32)      经度
+    latitude                varchar(32)      维度
+    transaction_time        TIMESTAMP WITHOUT TIME ZONE   成交时间
+渠道表t_chan_order
+    chan_order_id               varchar(32)      渠道ID
+    chan_origin_order_id        varchar(32)      渠道原始ID
+    order_id                    varchar(64)      收单ID
+    origin_order_id             varchar(64)      收单原始ID
+    merchant_id                 varchar(32)      商户ID
+    transaction_type            varchar(32)      订单类型auth/capture/void/refund_void/sale/refund/recurring
+    order_amount                numeric(24,6)    订单金额
+    order_available_amount      numeric(24,6)    订单剩余金额
+    order_currency              varchar(3)       订单币种
+    exchange_rate               varchar(32)      汇率信息
+    exchange_rate_id            varchar(32)      汇率ID
+    chan_amount                 numeric(24,6)    渠道金额
+    chan_available_amount       numeric(24,6)    订单剩余金额
+    chan_currency               varchar(3)       渠道币种
+    chan_code                   varchar(16)      渠道号
+    chan_unit_id                varchar(16)      渠道2级商户号
+    interaction_unit_id         varchar(16)      merchant交易主体ID
+    serial_number               varchar(16)      系列号
+    order_status                varchar(32)      订单状态(3d2_challenge/3d2_identify/present_2_shopper/redirect_shopper/failure/pending/success)
+    chan_resp_code              varchar(16)      渠道返回code
+    chan_bank_code              varchar(16)      渠道返回银行CODE
+    chan_msg_1                  varchar(128)     渠道返回消息1
+    chan_msg_2                  varchar(128)     渠道返回消息2
+    auth_code                   varchar(16)      授权号
+    chan_reference_id           varchar(64)      渠道返回号
+    chan_clearing_id            varchar(64)      渠道请款ID
+    payment_method              varchar(64)      Entercash/MOLPay/Open banking/QiwiWallet
+    interaction_method          varchar(64)      qrcode/3d/scan/pos/3d2
+    card_scheme                 varchar(32)      VISA/JCB/AE/and so on
+    create_time                 TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time                 TIMESTAMP WITHOUT TIME ZONE   更新时间
+    complete_time               TIMESTAMP WITHOUT TIME ZONE   完成时间(failure,success)
+
+支付方式表 t_payment_method
+    payment_id             SERIAL primary key
+    pay_method             varchar(64)      JCB/VISA/ALIPAY/.....
+    pay_method_type        varchar(64)      app/qrcode/scheme_normal/scheme_3d/scheme_3d2/scheme_pos/
+    countries              varchar(1024)    支持的国家
+    support_3d             varchar(5)       true/false
+    support_recurring      varchar(5)       true/false
+    support_refund         varchar(5)       true/false
+    support_void           varchar(5)       true/false
+    chargeback_enabled     varchar(5)       true/false
+    status                 varchar(32)      true/false
+    create_time            TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time            TIMESTAMP WITHOUT TIME ZONE   更新时间
+支付属性表 t_payment_method_attr
+    payment_attr_id         SERIAL primary key
+    payment_id              主键ID
+    attr_name               varchar(64)     属性名
+    item_array              varchar(256)    枚举类型,所有类型
+    key                     varchar(32)     属性key
+    optional                varchar(5)       true/false
+    type                    varchar(32)     enum/text
+    validator               varchar(256)    校验的类
+    status                  varchar(32)      true/false
+    create_time            TIMESTAMP WITHOUT TIME ZONE   创建时间
+    update_time            TIMESTAMP WITHOUT TIME ZONE   更新时间
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://help.shopify.com/en/api/reference/events/event#orders-2019-10
 
 
